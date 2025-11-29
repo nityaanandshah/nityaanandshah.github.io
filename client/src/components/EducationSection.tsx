@@ -1,6 +1,9 @@
+import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { GraduationCap, MapPin } from "lucide-react";
+import { GraduationCap, MapPin, BookOpen } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
+import AnimatedCard from "./AnimatedCard";
 
 interface EducationItem {
   id: string;
@@ -33,111 +36,135 @@ export default function EducationSection({
   return (
     <section id="education" className="py-20 sm:py-32 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="space-y-4 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-            Education & Publications
-          </h2>
-          <div className="h-1 w-16 bg-primary rounded-full" />
-        </div>
+        <AnimatedSection>
+          <div className="space-y-4 mb-12">
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+              Education & Publications
+            </h2>
+            <motion.div
+              className="h-1 w-16 bg-primary rounded-full"
+              initial={{ width: 0 }}
+              whileInView={{ width: 64 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            />
+          </div>
+        </AnimatedSection>
 
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold flex items-center gap-2">
-              <GraduationCap className="h-5 w-5 text-primary" />
-              Education
-            </h3>
-            <div className="space-y-4">
-              {education.map((item) => (
-                <Card
-                  key={item.id}
-                  className="border-card-border"
-                  data-testid={`card-education-${item.id}`}
+            <AnimatedSection delay={0.1}>
+              <h3 className="text-xl font-semibold flex items-center gap-2">
+                <motion.div
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <CardHeader className="pb-3">
-                    <h4 className="font-semibold text-lg">{item.degree}</h4>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm text-muted-foreground">
-                      <span className="text-primary font-medium">
-                        {item.institution}
-                      </span>
-                      <span className="hidden sm:inline">•</span>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="h-3.5 w-3.5" />
-                        {item.location}
+                  <GraduationCap className="h-5 w-5 text-primary" />
+                </motion.div>
+                Education
+              </h3>
+            </AnimatedSection>
+            <div className="space-y-4">
+              {education.map((item, index) => (
+                <AnimatedCard key={item.id} index={index}>
+                  <Card
+                    className="border-card-border hover:shadow-lg transition-shadow"
+                    data-testid={`card-education-${item.id}`}
+                  >
+                    <CardHeader className="pb-3">
+                      <h4 className="font-semibold text-lg">{item.degree}</h4>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm text-muted-foreground">
+                        <span className="text-primary font-medium">
+                          {item.institution}
+                        </span>
+                        <span className="hidden sm:inline">•</span>
+                        <div className="flex items-center gap-1">
+                          <MapPin className="h-3.5 w-3.5" />
+                          {item.location}
+                        </div>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">{item.period}</span>
-                      <Badge variant="secondary" className="font-mono">
-                        {item.grade}
-                      </Badge>
-                    </div>
-                    {item.highlights.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                        {item.highlights.slice(0, 4).map((highlight) => (
-                          <Badge
-                            key={highlight}
-                            variant="outline"
-                            className="text-xs"
-                          >
-                            {highlight}
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-muted-foreground">{item.period}</span>
+                        <motion.div whileHover={{ scale: 1.05 }}>
+                          <Badge variant="secondary" className="font-mono">
+                            {item.grade}
                           </Badge>
-                        ))}
-                        {item.highlights.length > 4 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{item.highlights.length - 4} more
-                          </Badge>
-                        )}
+                        </motion.div>
                       </div>
-                    )}
-                  </CardContent>
-                </Card>
+                      {item.highlights.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {item.highlights.slice(0, 4).map((highlight, hIndex) => (
+                            <motion.div
+                              key={highlight}
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: 0.3 + hIndex * 0.05 }}
+                              whileHover={{ scale: 1.05 }}
+                            >
+                              <Badge
+                                variant="outline"
+                                className="text-xs"
+                              >
+                                {highlight}
+                              </Badge>
+                            </motion.div>
+                          ))}
+                          {item.highlights.length > 4 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{item.highlights.length - 4} more
+                            </Badge>
+                          )}
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                </AnimatedCard>
               ))}
             </div>
           </div>
 
           <div className="space-y-6">
-            <h3 className="text-xl font-semibold flex items-center gap-2">
-              <svg
-                className="h-5 w-5 text-primary"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                />
-              </svg>
-              Publications
-            </h3>
-            <div className="space-y-4">
-              {publications.map((pub) => (
-                <Card
-                  key={pub.id}
-                  className="border-card-border"
-                  data-testid={`card-publication-${pub.id}`}
+            <AnimatedSection delay={0.2}>
+              <h3 className="text-xl font-semibold flex items-center gap-2">
+                <motion.div
+                  whileHover={{ rotate: -10, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <CardContent className="p-6">
-                    <div className="space-y-3">
-                      <h4 className="font-semibold">{pub.title}</h4>
-                      <div className="text-sm text-muted-foreground space-y-1">
-                        <p>
-                          <span className="text-primary font-medium">
-                            {pub.venue}
-                          </span>
-                        </p>
-                        <p>{pub.track}</p>
+                  <BookOpen className="h-5 w-5 text-primary" />
+                </motion.div>
+                Publications
+              </h3>
+            </AnimatedSection>
+            <div className="space-y-4">
+              {publications.map((pub, index) => (
+                <AnimatedCard key={pub.id} index={index}>
+                  <Card
+                    className="border-card-border hover:shadow-lg transition-shadow"
+                    data-testid={`card-publication-${pub.id}`}
+                  >
+                    <CardContent className="p-6">
+                      <div className="space-y-3">
+                        <h4 className="font-semibold">{pub.title}</h4>
+                        <div className="text-sm text-muted-foreground space-y-1">
+                          <p>
+                            <span className="text-primary font-medium">
+                              {pub.venue}
+                            </span>
+                          </p>
+                          <p>{pub.track}</p>
+                        </div>
+                        <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
+                          <Badge variant="secondary" className="font-mono text-xs">
+                            {pub.year}
+                          </Badge>
+                        </motion.div>
                       </div>
-                      <Badge variant="secondary" className="font-mono text-xs">
-                        {pub.year}
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </AnimatedCard>
               ))}
             </div>
           </div>
