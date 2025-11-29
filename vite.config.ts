@@ -27,6 +27,8 @@ export default defineConfig({
     },
   },
   root: path.resolve(import.meta.dirname, "client"),
+  // Set base path for GitHub Pages deployment
+  base: process.env.GITHUB_PAGES === 'true' ? '/NityaPortfolio/' : '/',
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
