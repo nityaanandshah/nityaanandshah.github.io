@@ -1,0 +1,152 @@
+You are an expert front-end engineer and designer building a modern, sleek portfolio website for a Software Engineer targeting FAANG SDE roles.
+
+🎯 GOAL
+Create a single-page, responsive portfolio website implemented using React (with a simple setup like Vite or Create React App) that makes it EASY to update content later by editing a single config/data file (no component changes required for adding/removing projects or experience).
+
+Please generate ALL necessary files (not just one component): main entry, App component, reusable components, styles, and a data/config file.
+
+👤 DEV INFO (USE THIS TO WRITE REAL CONTENT, NOT LOREM IPSUM)
+Name: Nitya Anand Shah  
+Title: Software Engineer  
+Email: nityashah2801@gmail.com  
+Location: India  
+LinkedIn: https://www.linkedin.com/in/nityaanandshah  
+GitHub:  https://github.com/nityaanandshah  
+
+Education:
+- B.Tech in Computer Science and Engineering, IIT Jodhpur (2020–2024), CGPA 8.11/10
+
+Current Role:
+- Software Engineer, BNY (July 2024 – Present), Pune  
+  - Full stack development with Spring Boot, Angular, Oracle SQL  
+  - Building applications to streamline document-heavy workflows  
+  - Developed “Prompt’athon”: AI-powered platform to enhance prompt writing skills, with contest-style participation and AI-generated suggestions using Angular, Spring Boot, Oracle SQL
+
+Past Experience (brief highlights):
+- Software Development Intern, Publicis Sapient (2023) – Node.js, MongoDB, RabbitMQ, Docker, Kubernetes, microservices, JWT, healthcare system
+- ML Intern, BJ Medical College (2022) – COVID rural data EDA, symptom categorization
+- Web Dev Intern, 3 Steps Ahead Technology (2022) – Built responsive dashboard using HTML/CSS/JS/React
+
+Selected Projects (put these in the Projects section):
+1. Teaching Copilot
+   - Educational tool using Llama 2 for text summarization, Q&A, quiz-based revision
+   - React, Node.js, Socket.io, prompt engineering, real-time interaction
+
+2. Prompt’athon (from BNY)
+   - AI-powered platform to practice and improve prompt writing
+   - Contest-style flows, multiple engagement modes, AI feedback
+   - Angular, Spring Boot, Oracle SQL, scalability and responsiveness focus
+
+3. Identifying Key Biomarkers from IoT-based Data
+   - EDA and anomaly detection for MCI symptoms in elderly using sensor data
+   - ML models, unsupervised learning, hyperparameter tuning, ensemble methods
+
+One Publication:
+- Deep Learning-Based Diagnosis of Thyroid Tumors – accepted at SPIE Medical Imaging 2024 (Computer-Aided Diagnosis track)
+
+🧱 TECH STACK (SHOW AS SKILLS/CHIPS)
+- Programming: C++, C, Python, Java
+- Web: HTML, CSS, JavaScript, React, Angular, Node.js, Spring Boot, MySQL, MongoDB, Oracle
+- ML: NumPy, Pandas, scikit-learn, PyTorch, Keras, TensorFlow
+- Tools: Docker, Kubernetes
+
+🖥️ SITE REQUIREMENTS
+
+1. Overall
+- Single-page React app with smooth scroll navigation.
+- Sections (as separate components):
+  - Hero (intro + call to action buttons)
+  - About
+  - Skills
+  - Experience
+  - Projects
+  - Education
+  - Publications
+  - Contact
+- Responsive layout for mobile, tablet, desktop.
+- Modern, FAANG-style, minimal design:
+  - Plenty of whitespace
+  - Clear typography
+  - Subtle hover effects and micro-animations
+- Implement basic accessibility (semantic HTML, aria-labels where needed).
+
+2. HERO SECTION
+- Show name, title (“Software Engineer”), short 2–3 line summary tailored to FAANG SDE roles (DSA, systems thinking, full stack, ML exposure).
+- Prominent buttons:
+  - “View Projects” (scrolls to Projects)
+  - “Download Resume” (placeholder link)
+  - “Contact Me” (scrolls to Contact)
+- Social icons for GitHub & LinkedIn (clickable).
+
+3. ABOUT SECTION
+- Short professional summary (1 short paragraph).
+- Emphasize:
+  - Background from IIT Jodhpur
+  - Experience with scalable systems, microservices, full stack
+  - Interest in backend, distributed systems, and ML applications.
+
+4. SKILLS SECTION
+- Group skills into categories (Programming, Web, ML, Tools).
+- Render them from data (arrays) as badges/“chips.”
+- Design it so I can add/remove skills by editing the data file only.
+
+5. EXPERIENCE SECTION
+- Timeline or card layout for roles (BNY, Publicis Sapient, BJ Medical College, 3 Steps Ahead).
+- For each experience:
+  - role, company, dates, location, tech stack, 3–4 bullet points.
+- Content should be driven from data (an array of experience objects) so I can reorder or add new entries easily.
+
+6. PROJECTS SECTION
+- THIS MUST BE THE MOST IMPORTANT PART.
+- Display projects in a responsive grid of cards.
+- For each project:
+  - name, short description, tech stack, bullet list of impact (quantify where possible), optional GitHub/demo links.
+- Projects should be read from a single `projects` array so that to add/delete projects in the future I only modify that array.
+
+7. EDUCATION & PUBLICATIONS
+- Simple clean cards pulled from data arrays.
+
+8. CONTACT SECTION
+- Show email, maybe a simple contact form (name, email, message) with front-end validation only.
+- For now, just log form data to console instead of real backend submission, but structure the code so I can easily plug in an API later.
+- Include a short line encouraging recruiters/engineers to reach out.
+
+📁 ARCHITECTURE & CONFIGURABILITY (VERY IMPORTANT)
+
+- Create a dedicated data file, for example:
+  - `src/data/portfolioData.ts` (or `.js`)
+- Put ALL content in this file:
+  - name, title, summary
+  - social links
+  - skills arrays
+  - experience array
+  - projects array
+  - education
+  - publications
+- All components must read data from this file only.
+- I should be able to:
+  - Add a new project by appending to `projects` in that data file.
+  - Remove a project by deleting an item from that array.
+  - Add/update experience entries the same way.
+- Add clear comments in the data file explaining how to add/remove/update projects and experience.
+
+🎨 DESIGN & IMPLEMENTATION DETAILS
+
+- Use a modern layout with a sticky or top navigation bar that highlights the current section when scrolling.
+- Use smooth scrolling to sections.
+- Simple, clean color palette (e.g., off-white background, dark text, one accent color).
+- Use CSS modules or a single `styles.css` file, OR TailwindCSS if you prefer, but keep it clean and organized.
+- Use small, tasteful animations (e.g., fade-in on scroll) but avoid anything too heavy.
+- Ensure good Lighthouse scores for performance and accessibility as much as possible.
+
+🧪 CODE QUALITY
+
+- Use functional components and hooks.
+- Organize components into `components/` and data into `data/`.
+- Add TypeScript types if you choose TS (preferred but optional).
+- Write clear comments where I’m expected to customize/update content later (especially around the data file).
+
+Finally, output:
+1. The complete project structure with filenames.
+2. The full source code for each file.
+3. A short note at the end reminding me: “To add or remove a project, just edit the projects array in src/data/portfolioData.ts (or .js). No component changes are needed.”
