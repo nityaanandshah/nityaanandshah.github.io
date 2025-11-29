@@ -16,7 +16,7 @@ git push origin main
 
 ### 2. Enable GitHub Pages in Repository Settings
 
-1. Go to your repository on GitHub: https://github.com/nityaanandshah/NityaPortfolio
+1. Go to your repository on GitHub: https://github.com/nityaanandshah/
 2. Click on **Settings** tab
 3. Scroll down to **Pages** in the left sidebar
 4. Under **Source**, select **GitHub Actions** (not the branch option)
@@ -33,14 +33,14 @@ The workflow will automatically run when you push to the `main` branch. You can 
 
 Once the deployment is complete (usually takes 2-3 minutes), your website will be available at:
 
-**https://nityaanandshah.github.io/NityaPortfolio/**
+**https://nityaanandshah.github.io/**
 
 ## How It Works
 
 - **GitHub Actions Workflow**: The `.github/workflows/deploy.yml` file defines the deployment process
 - **Build Process**: Runs `npm run build` which creates optimized production files in `dist/public/`
 - **Deployment**: Uploads the `dist/public/` directory to GitHub Pages
-- **Base Path**: The Vite config automatically sets the correct base path (`/NityaPortfolio/`) for GitHub Pages
+- **Base Path**: The Vite config automatically sets the correct base path (`/`) for GitHub Pages
 
 ## Troubleshooting
 
