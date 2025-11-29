@@ -5,6 +5,7 @@ import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import EducationSection from "@/components/EducationSection";
+import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -17,6 +18,7 @@ import {
   projects,
   education,
   publications,
+  blogPosts,
   navLinks,
 } from "@/data/portfolioData";
 
@@ -46,6 +48,8 @@ export default function Portfolio() {
         <ProjectsSection projects={projects} />
 
         <EducationSection education={education} publications={publications} />
+
+        <BlogSection posts={blogPosts} />
 
         <ContactSection
           email={personalInfo.email}
