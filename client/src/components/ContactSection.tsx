@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Mail, MapPin, Phone, Send, CheckCircle2 } from "lucide-react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeader from "./SectionHeader";
 
 interface ContactSectionProps {
   email: string;
@@ -87,46 +88,32 @@ export default function ContactSection({
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-32 px-6 bg-muted/30">
+    <section id="contact" className="py-24 sm:py-32 px-6 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
-        <AnimatedSection>
-          <div className="space-y-4 mb-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              Get In Touch
-            </h2>
-            <motion.div
-              className="h-1 w-16 bg-primary rounded-full"
-              initial={{ width: 0 }}
-              whileInView={{ width: 64 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            />
-            <p className="text-muted-foreground max-w-2xl">
-              I'm always open to discussing new opportunities, interesting projects,
-              or just having a chat about technology. Feel free to reach out!
-            </p>
-          </div>
-        </AnimatedSection>
+        <SectionHeader
+          title="Get In Touch"
+          description="I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology. Feel free to reach out!"
+        />
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-16">
           <AnimatedSection delay={0.1}>
-            <div className="space-y-8">
+            <div className="space-y-10">
               <div className="space-y-6">
                 <motion.a
                   href={`mailto:${email}`}
-                  className="flex items-center gap-4 group"
+                  className="flex items-center gap-5 group"
                   whileHover={{ x: 4 }}
                   data-testid="link-contact-email"
                 >
                   <motion.div
-                    className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                    className="p-4 rounded-xl bg-secondary text-foreground group-hover:bg-foreground group-hover:text-background transition-colors"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
                     <Mail className="h-5 w-5" />
                   </motion.div>
                   <div>
                     <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="font-medium group-hover:text-primary transition-colors">
+                    <p className="font-medium group-hover:text-foreground transition-colors">
                       {email}
                     </p>
                   </div>
@@ -134,30 +121,30 @@ export default function ContactSection({
 
                 <motion.a
                   href={`tel:${phone}`}
-                  className="flex items-center gap-4 group"
+                  className="flex items-center gap-5 group"
                   whileHover={{ x: 4 }}
                   data-testid="link-contact-phone"
                 >
                   <motion.div
-                    className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                    className="p-4 rounded-xl bg-secondary text-foreground group-hover:bg-foreground group-hover:text-background transition-colors"
                     whileHover={{ scale: 1.1, rotate: -5 }}
                   >
                     <Phone className="h-5 w-5" />
                   </motion.div>
                   <div>
                     <p className="text-sm text-muted-foreground">Phone</p>
-                    <p className="font-medium group-hover:text-primary transition-colors">
+                    <p className="font-medium group-hover:text-foreground transition-colors">
                       {phone}
                     </p>
                   </div>
                 </motion.a>
 
                 <motion.div
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-5"
                   whileHover={{ x: 4 }}
                 >
                   <motion.div
-                    className="p-3 rounded-lg bg-primary/10 text-primary"
+                    className="p-4 rounded-xl bg-secondary text-foreground"
                     whileHover={{ scale: 1.1 }}
                   >
                     <MapPin className="h-5 w-5" />
@@ -169,16 +156,16 @@ export default function ContactSection({
                 </motion.div>
               </div>
 
-              <div className="pt-4">
-                <p className="text-sm text-muted-foreground mb-4">
+              <div className="pt-6">
+                <p className="text-sm text-muted-foreground mb-5">
                   Connect with me on social media
                 </p>
-                <div className="flex gap-3">
+                <div className="flex gap-4">
                   <motion.a
                     href={social.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-lg bg-card border border-card-border hover:bg-accent transition-colors"
+                    className="p-4 rounded-xl bg-card border border-card-border hover:bg-secondary transition-colors"
                     aria-label="GitHub Profile"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
@@ -190,7 +177,7 @@ export default function ContactSection({
                     href={social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-lg bg-card border border-card-border hover:bg-accent transition-colors"
+                    className="p-4 rounded-xl bg-card border border-card-border hover:bg-secondary transition-colors"
                     aria-label="LinkedIn Profile"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
@@ -205,8 +192,8 @@ export default function ContactSection({
 
           <AnimatedSection delay={0.2}>
             <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.2 }}>
-              <Card className="border-card-border">
-                <CardContent className="p-6">
+              <Card className="border-card-border bg-card/50 backdrop-blur-sm">
+                <CardContent className="p-8">
                   <AnimatePresence mode="wait">
                     {isSubmitted ? (
                       <motion.div
@@ -214,18 +201,18 @@ export default function ContactSection({
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.8 }}
-                        className="flex flex-col items-center justify-center py-12 text-center space-y-4"
+                        className="flex flex-col items-center justify-center py-16 text-center space-y-5"
                       >
                         <motion.div
-                          className="p-3 rounded-full bg-green-500/10 text-green-500"
+                          className="p-4 rounded-full bg-green-500/10 text-green-500"
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           transition={{ type: "spring", delay: 0.2 }}
                         >
-                          <CheckCircle2 className="h-8 w-8" />
+                          <CheckCircle2 className="h-10 w-10" />
                         </motion.div>
                         <div className="space-y-2">
-                          <h3 className="font-semibold text-lg">Message Sent!</h3>
+                          <h3 className="font-semibold text-xl font-display">Message Sent!</h3>
                           <p className="text-sm text-muted-foreground">
                             Thank you for reaching out. I'll get back to you soon.
                           </p>
@@ -241,14 +228,14 @@ export default function ContactSection({
                         className="space-y-6"
                       >
                         <div className="space-y-2">
-                          <Label htmlFor="name">Name</Label>
+                          <Label htmlFor="name" className="text-sm font-medium">Name</Label>
                           <Input
                             id="name"
                             name="name"
                             placeholder="Your name"
                             value={formData.name}
                             onChange={handleChange}
-                            className={errors.name ? "border-destructive" : ""}
+                            className={`h-12 ${errors.name ? "border-destructive" : ""}`}
                             data-testid="input-contact-name"
                           />
                           <AnimatePresence>
@@ -266,7 +253,7 @@ export default function ContactSection({
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="email">Email</Label>
+                          <Label htmlFor="email" className="text-sm font-medium">Email</Label>
                           <Input
                             id="email"
                             name="email"
@@ -274,7 +261,7 @@ export default function ContactSection({
                             placeholder="your.email@example.com"
                             value={formData.email}
                             onChange={handleChange}
-                            className={errors.email ? "border-destructive" : ""}
+                            className={`h-12 ${errors.email ? "border-destructive" : ""}`}
                             data-testid="input-contact-email"
                           />
                           <AnimatePresence>
@@ -292,7 +279,7 @@ export default function ContactSection({
                         </div>
 
                         <div className="space-y-2">
-                          <Label htmlFor="message">Message</Label>
+                          <Label htmlFor="message" className="text-sm font-medium">Message</Label>
                           <Textarea
                             id="message"
                             name="message"
@@ -323,7 +310,7 @@ export default function ContactSection({
                         >
                           <Button
                             type="submit"
-                            className="w-full gap-2"
+                            className="w-full gap-2 h-12 text-base"
                             disabled={isSubmitting}
                             data-testid="button-contact-submit"
                           >

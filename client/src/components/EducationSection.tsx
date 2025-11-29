@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { GraduationCap, MapPin, BookOpen } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 import AnimatedCard from "./AnimatedCard";
+import SectionHeader from "./SectionHeader";
 
 interface EducationItem {
   id: string;
@@ -34,61 +35,48 @@ export default function EducationSection({
   publications,
 }: EducationSectionProps) {
   return (
-    <section id="education" className="py-20 sm:py-32 px-6">
+    <section id="education" className="py-24 sm:py-32 px-6">
       <div className="max-w-6xl mx-auto">
-        <AnimatedSection>
-          <div className="space-y-4 mb-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              Education & Publications
-            </h2>
-            <motion.div
-              className="h-1 w-16 bg-primary rounded-full"
-              initial={{ width: 0 }}
-              whileInView={{ width: 64 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            />
-          </div>
-        </AnimatedSection>
+        <SectionHeader title="Education & Publications" />
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          <div className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-12">
+          <div className="space-y-8">
             <AnimatedSection delay={0.1}>
-              <h3 className="text-xl font-semibold flex items-center gap-2">
+              <h3 className="text-xl font-semibold flex items-center gap-3 font-display">
                 <motion.div
                   whileHover={{ rotate: 10, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <GraduationCap className="h-5 w-5 text-primary" />
+                  <GraduationCap className="h-6 w-6 text-foreground" />
                 </motion.div>
                 Education
               </h3>
             </AnimatedSection>
-            <div className="space-y-4">
+            <div className="space-y-5">
               {education.map((item, index) => (
                 <AnimatedCard key={item.id} index={index}>
                   <Card
-                    className="border-card-border hover:shadow-lg transition-shadow"
+                    className="border-card-border bg-card/50 backdrop-blur-sm hover:shadow-lg transition-shadow"
                     data-testid={`card-education-${item.id}`}
                   >
                     <CardHeader className="pb-3">
-                      <h4 className="font-semibold text-lg">{item.degree}</h4>
+                      <h4 className="font-semibold text-lg font-display">{item.degree}</h4>
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm text-muted-foreground">
-                        <span className="text-primary font-medium">
+                        <span className="text-foreground font-medium">
                           {item.institution}
                         </span>
                         <span className="hidden sm:inline">•</span>
-                        <div className="flex items-center gap-1">
-                          <MapPin className="h-3.5 w-3.5" />
+                        <div className="flex items-center gap-1.5">
+                          <MapPin className="h-4 w-4" />
                           {item.location}
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="space-y-3">
+                    <CardContent className="space-y-4">
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-muted-foreground">{item.period}</span>
                         <motion.div whileHover={{ scale: 1.05 }}>
-                          <Badge variant="secondary" className="font-mono">
+                          <Badge variant="secondary" className="font-mono bg-background border border-border">
                             {item.grade}
                           </Badge>
                         </motion.div>
@@ -126,38 +114,38 @@ export default function EducationSection({
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             <AnimatedSection delay={0.2}>
-              <h3 className="text-xl font-semibold flex items-center gap-2">
+              <h3 className="text-xl font-semibold flex items-center gap-3 font-display">
                 <motion.div
                   whileHover={{ rotate: -10, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <BookOpen className="h-5 w-5 text-primary" />
+                  <BookOpen className="h-6 w-6 text-foreground" />
                 </motion.div>
                 Publications
               </h3>
             </AnimatedSection>
-            <div className="space-y-4">
+            <div className="space-y-5">
               {publications.map((pub, index) => (
                 <AnimatedCard key={pub.id} index={index}>
                   <Card
-                    className="border-card-border hover:shadow-lg transition-shadow"
+                    className="border-card-border bg-card/50 backdrop-blur-sm hover:shadow-lg transition-shadow"
                     data-testid={`card-publication-${pub.id}`}
                   >
                     <CardContent className="p-6">
-                      <div className="space-y-3">
-                        <h4 className="font-semibold">{pub.title}</h4>
+                      <div className="space-y-4">
+                        <h4 className="font-semibold font-display">{pub.title}</h4>
                         <div className="text-sm text-muted-foreground space-y-1">
                           <p>
-                            <span className="text-primary font-medium">
+                            <span className="text-foreground font-medium">
                               {pub.venue}
                             </span>
                           </p>
                           <p>{pub.track}</p>
                         </div>
                         <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
-                          <Badge variant="secondary" className="font-mono text-xs">
+                          <Badge variant="secondary" className="font-mono text-xs bg-background border border-border">
                             {pub.year}
                           </Badge>
                         </motion.div>

@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Folder } from "lucide-react";
-import AnimatedSection from "./AnimatedSection";
 import AnimatedCard from "./AnimatedCard";
+import SectionHeader from "./SectionHeader";
 
 interface Project {
   id: string;
@@ -21,38 +21,24 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
-    <section id="projects" className="py-20 sm:py-32 px-6 bg-muted/30">
+    <section id="projects" className="py-24 sm:py-32 px-6 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
-        <AnimatedSection>
-          <div className="space-y-4 mb-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              Featured Projects
-            </h2>
-            <motion.div
-              className="h-1 w-16 bg-primary rounded-full"
-              initial={{ width: 0 }}
-              whileInView={{ width: 64 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            />
-            <p className="text-muted-foreground max-w-2xl">
-              A selection of projects that showcase my experience in full-stack
-              development, machine learning, and building scalable applications.
-            </p>
-          </div>
-        </AnimatedSection>
+        <SectionHeader
+          title="Featured Projects"
+          description="A selection of projects that showcase my experience in full-stack development, machine learning, and building scalable applications."
+        />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <AnimatedCard key={project.id} index={index}>
               <Card
-                className="border-card-border transition-all group flex flex-col h-full hover:shadow-lg"
+                className="border-card-border bg-card/50 backdrop-blur-sm transition-all group flex flex-col h-full hover:shadow-lg"
                 data-testid={`card-project-${project.id}`}
               >
                 <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-start justify-between gap-4">
                     <motion.div
-                      className="p-2 rounded-md bg-primary/10 text-primary"
+                      className="p-2.5 rounded-lg bg-secondary text-foreground"
                       whileHover={{ rotate: 10, scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 400 }}
                     >
@@ -64,7 +50,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 rounded-md hover:bg-muted transition-colors"
+                          className="p-2 rounded-lg hover:bg-secondary transition-colors"
                           aria-label={`View ${project.name} on GitHub`}
                           whileHover={{ scale: 1.15, y: -2 }}
                           whileTap={{ scale: 0.95 }}
@@ -78,7 +64,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-2 rounded-md hover:bg-muted transition-colors"
+                          className="p-2 rounded-lg hover:bg-secondary transition-colors"
                           aria-label={`View ${project.name} demo`}
                           whileHover={{ scale: 1.15, y: -2 }}
                           whileTap={{ scale: 0.95 }}
@@ -89,19 +75,19 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                       )}
                     </div>
                   </div>
-                  <h3 className="font-semibold text-xl mt-4 group-hover:text-primary transition-colors">
+                  <h3 className="font-semibold text-xl mt-5 group-hover:text-foreground transition-colors font-display">
                     {project.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed mt-2">
                     {project.description}
                   </p>
                 </CardHeader>
-                <CardContent className="flex-1 flex flex-col justify-between space-y-4">
-                  <ul className="space-y-2">
+                <CardContent className="flex-1 flex flex-col justify-between space-y-5">
+                  <ul className="space-y-2.5">
                     {project.bullets.map((bullet, bulletIndex) => (
                       <motion.li
                         key={bulletIndex}
-                        className="text-sm text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-primary/40 before:rounded-full"
+                        className="text-sm text-muted-foreground pl-5 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-foreground/30 before:rounded-full"
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -111,7 +97,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                       </motion.li>
                     ))}
                   </ul>
-                  <div className="flex flex-wrap gap-2 pt-2">
+                  <div className="flex flex-wrap gap-2 pt-3">
                     {project.techStack.map((tech, techIndex) => (
                       <motion.div
                         key={tech}
@@ -123,7 +109,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                       >
                         <Badge
                           variant="secondary"
-                          className="font-mono text-xs"
+                          className="font-mono text-xs bg-background border border-border"
                         >
                           {tech}
                         </Badge>

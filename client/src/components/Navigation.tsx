@@ -70,16 +70,16 @@ export default function Navigation({ links, name }: NavigationProps) {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-6 h-18 py-5 flex items-center justify-between">
         <motion.button
           onClick={scrollToTop}
-          className="font-semibold text-lg tracking-tight hover:text-primary transition-colors"
+          className="font-semibold text-xl tracking-tight font-display hover:opacity-70 transition-opacity"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           data-testid="link-logo"
         >
           {name.split(" ")[0]}
-          <span className="text-primary">.</span>
+          <span className="text-muted-foreground">.</span>
         </motion.button>
 
         <div className="hidden md:flex items-center gap-1">
@@ -87,9 +87,9 @@ export default function Navigation({ links, name }: NavigationProps) {
             <motion.button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className={`relative px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+              className={`relative px-4 py-2 text-sm font-medium transition-colors ${
                 activeSection === link.id
-                  ? "text-primary"
+                  ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
               whileHover={{ scale: 1.05 }}
@@ -100,7 +100,7 @@ export default function Navigation({ links, name }: NavigationProps) {
               {activeSection === link.id && (
                 <motion.div
                   layoutId="activeSection"
-                  className="absolute bottom-0 left-2 right-2 h-0.5 bg-primary rounded-full"
+                  className="absolute bottom-0 left-3 right-3 h-0.5 bg-foreground rounded-full"
                   transition={{
                     type: "spring",
                     stiffness: 380,
@@ -145,10 +145,10 @@ export default function Navigation({ links, name }: NavigationProps) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   onClick={() => scrollToSection(link.id)}
-                  className={`block w-full text-left px-4 py-3 text-sm font-medium rounded-md transition-colors ${
+                  className={`block w-full text-left px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                     activeSection === link.id
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "text-foreground bg-secondary"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                   }`}
                   data-testid={`link-mobile-nav-${link.id}`}
                 >

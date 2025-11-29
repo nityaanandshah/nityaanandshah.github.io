@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import AnimatedSection from "./AnimatedSection";
+import SectionHeader from "./SectionHeader";
 
 interface SkillsSectionProps {
   skills: {
@@ -20,31 +21,18 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
   ];
 
   return (
-    <section id="skills" className="py-20 sm:py-32 px-6 bg-muted/30">
+    <section id="skills" className="py-24 sm:py-32 px-6 bg-secondary/30">
       <div className="max-w-6xl mx-auto">
-        <AnimatedSection>
-          <div className="space-y-4 mb-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              Skills & Technologies
-            </h2>
-            <motion.div
-              className="h-1 w-16 bg-primary rounded-full"
-              initial={{ width: 0 }}
-              whileInView={{ width: 64 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            />
-          </div>
-        </AnimatedSection>
+        <SectionHeader title="Skills & Technologies" />
 
-        <div className="grid sm:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-12">
           {categories.map((category, categoryIndex) => (
             <AnimatedSection key={category.label} delay={categoryIndex * 0.1}>
-              <div className="space-y-4">
-                <h3 className="font-semibold text-lg text-foreground">
+              <div className="space-y-5">
+                <h3 className="font-semibold text-lg text-foreground font-display">
                   {category.label}
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {category.items.map((skill, skillIndex) => (
                     <motion.div
                       key={skill}
@@ -60,7 +48,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
                     >
                       <Badge
                         variant="secondary"
-                        className="font-mono text-sm px-3 py-1.5 cursor-default"
+                        className="font-mono text-sm px-4 py-2 cursor-default bg-background border border-border"
                         data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, "-")}`}
                       >
                         {skill}
