@@ -7,6 +7,7 @@ interface SkillsSectionProps {
   skills: {
     programming: string[];
     web: string[];
+    databases: string[];
     ml: string[];
     tools: string[];
   };
@@ -16,6 +17,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
   const categories = [
     { label: "Programming Languages", items: skills.programming },
     { label: "Web Development", items: skills.web },
+    { label: "Databases", items: skills.databases },
     { label: "Machine Learning", items: skills.ml },
     { label: "Tools & Technologies", items: skills.tools },
   ];
@@ -25,7 +27,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
       <div className="max-w-6xl mx-auto">
         <SectionHeader title="Skills & Technologies" />
 
-        <div className="grid sm:grid-cols-2 gap-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {categories.map((category, categoryIndex) => (
             <AnimatedSection key={category.label} delay={categoryIndex * 0.1}>
               <div className="space-y-5">

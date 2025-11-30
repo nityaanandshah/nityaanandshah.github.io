@@ -55,6 +55,7 @@ export default function Portfolio() {
           email={personalInfo.email}
           phone={personalInfo.phone}
           location={personalInfo.location}
+          web3formsKey={personalInfo.web3formsKey}
           social={personalInfo.social}
         />
       </main>

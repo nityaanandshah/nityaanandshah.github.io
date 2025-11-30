@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Download, Mail } from "lucide-react";
+import { ArrowDown, FileText, Mail } from "lucide-react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 
 interface HeroSectionProps {
@@ -130,11 +130,11 @@ export default function HeroSection({
                 size="lg"
                 asChild
                 className="gap-2 h-12 px-6 text-base"
-                data-testid="button-download-resume"
+                data-testid="button-view-resume"
               >
-                <a href={resumeUrl} download>
-                  <Download className="h-4 w-4" />
-                  Resume
+                <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                  <FileText className="h-4 w-4" />
+                  View Resume
                 </a>
               </Button>
             </motion.div>

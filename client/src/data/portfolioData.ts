@@ -19,28 +19,26 @@ export const personalInfo = {
   phone: "+91 7621070728",
   location: "Pune, India",
   tagline: "Building scalable systems and solving real-world problems through thoughtful engineering, clean design, and data-driven decision making.",
-  resumeUrl: "#", // TODO: Replace with actual resume URL
+  resumeUrl: "https://drive.google.com/file/d/1cgbMDfs84YO1EYogG_cvcD37rqoaC6N_/view?usp=sharing",
+  web3formsKey: "02981efd-1b2c-4c78-aed9-75c5b4eb114b", // Web3Forms access key
   social: {
-    linkedin: "https://www.linkedin.com/in/nityaanandshah",
+    linkedin: "https://www.linkedin.com/in/nitya-anand-shah-5b059221a/",
     github: "https://github.com/nityaanandshah",
   },
 };
 
 export const aboutContent = {
   summary: `I'm a Software Engineer at BNY with a strong foundation in computer science from IIT Jodhpur. 
-  I thrive on transforming complex business challenges into elegant technical solutions—whether architecting Spring Boot microservices that handle enterprise-scale workflows, 
-  building intuitive frontends with Angular and React, or leveraging machine learning to unlock insights from data. 
-  At BNY, I've taken ownership of streamlining document-heavy workflows, reducing processing time while improving user experience. 
-  I actively seek out opportunities to learn emerging technologies, collaborate across teams, and deliver measurable impact. 
-  My curiosity drives me to explore the intersection of distributed systems, AI, and scalable architecture.
+  I specialize in building scalable full-stack applications—from Spring Boot microservices that streamline enterprise workflows to intuitive Angular frontends that improve user productivity. 
+  At BNY, I've designed systems that reduce manual processing time by 40% and built Prompt'athon, an AI-powered platform supporting 1,000+ concurrent users with real-time LLM feedback. 
   
-  Outside of work, I love mentoring peers and exploring distributed systems and AI research. 
-  I believe in staying curious, owning problems end-to-end, and building products that make a meaningful impact.`,
+  Previously, I architected a microservices-based Healthcare Management System with Docker/Kubernetes deployment, and contributed to rural COVID-19 contact tracing through data analysis. 
+  I'm passionate about solving real-world problems through clean code, thoughtful architecture, and data-driven solutions.`,
   highlights: [
     "Full Stack Development with Spring Boot, Angular, and React",
-    "Microservices Architecture & RESTful APIs",
-    "Machine Learning & Data Analysis",
-    "Strong foundation in DSA and Systems Design",
+    "Microservices Architecture & Cloud Deployment",
+    "AI/LLM Integration & Real-time Systems",
+    "Data Analysis & Performance Optimization",
   ],
 };
 
@@ -49,10 +47,11 @@ export const aboutContent = {
  * Grouped by category. Add or remove skills as needed.
  */
 export const skills = {
-  programming: ["C++", "C", "Python", "Java"],
-  web: ["HTML", "CSS", "JavaScript", "React", "Angular", "Node.js", "Spring Boot", "MySQL", "MongoDB", "Oracle"],
-  ml: ["NumPy", "Pandas", "scikit-learn", "PyTorch", "Keras", "TensorFlow"],
-  tools: ["Docker", "Kubernetes", "Git", "MATLAB"],
+  programming: ["Java", "Python", "JavaScript", "TypeScript", "C++", "C"],
+  web: ["React", "Angular", "Node.js", "Express.js", "Spring Boot", "HTML", "CSS", "Tailwind CSS", "RESTful APIs"],
+  databases: ["Oracle SQL", "MySQL", "MongoDB"],
+  ml: ["NumPy", "Pandas", "scikit-learn", "PyTorch", "Keras", "TensorFlow", "Matplotlib"],
+  tools: ["Docker", "Kubernetes", "Git", "GitHub Actions", "Vite", "RabbitMQ", "JWT", "SonarQube", "Swagger UI", "MATLAB"],
 };
 
 /**
@@ -68,12 +67,12 @@ export const experience = [
     location: "Pune, India",
     startDate: "July 2024",
     endDate: "Present",
-    techStack: ["Spring Boot", "Angular", "Oracle SQL", "RESTful APIs"],
+    techStack: ["Spring Boot", "Angular", "Oracle SQL", "RESTful APIs", "LLM Integration"],
     bullets: [
-      "Architecting and developing enterprise applications to streamline document-heavy workflows, reducing processing time by 35% through Spring Boot microservices and optimized RESTful APIs",
-      "Leading front-end development with Angular to deliver intuitive user experiences, collaborating with UX designers and product managers to improve user satisfaction scores",
-      "Took ownership of Prompt'athon—an AI-powered platform for enhancing prompt writing skills—enabling more than 120+ participants to engage in real-time AI-assisted competitions; improved response latency by 40% through performance optimizations in Angular + Spring Boot; adopted internally across multiple teams at BNY",
-      "Proactively integrated AI-generated suggestions with real-time feedback loops, ensuring sub-200ms response times and 99.5% uptime through performance optimization and load testing",
+      "Designed and implemented Spring Boot–based microservices to automate and streamline document-heavy banking workflows, reducing manual processing time by ~40% and improving system reliability through RESTful API integrations",
+      "Developed a modular Angular front end with reusable UI components and state-management best practices, improving user task completion speed by 30%, backed by optimized Oracle SQL schemas for high-volume transactional data",
+      "Built Prompt'athon, an AI-driven platform enabling large-scale prompt-writing competitions, supporting 1,000+ concurrent users, multiple engagement modes, and real-time scoring pipelines",
+      "Integrated LLM-powered suggestion engines to provide sub-second, real-time feedback to users, enhancing engagement by 50% and ensuring end-to-end scalability using Angular, Spring Boot microservices, and Oracle SQL performance tuning",
     ],
   },
   {
@@ -83,26 +82,27 @@ export const experience = [
     location: "Remote",
     startDate: "June 2023",
     endDate: "July 2023",
-    techStack: ["Node.js", "MongoDB", "RabbitMQ", "Docker", "Kubernetes"],
+    techStack: ["Spring Boot", "MongoDB", "RabbitMQ", "Docker", "Kubernetes", "JWT"],
     bullets: [
-      "Independently designed and developed Patient Management module for HealthCare Management system using microservices architecture, handling 10,000+ patient records with 99.9% data consistency",
-      "Engineered secure RESTful APIs with JWT authentication and MongoDB for patient data storage, reducing data retrieval time by 40% through indexing and query optimization",
-      "Implemented asynchronous communication between 5+ microservices using RabbitMQ, improving system throughput by 50% and ensuring fault tolerance",
-      "Containerized and deployed the system using Docker and Kubernetes, collaborating with DevOps team to establish CI/CD pipelines and achieve zero-downtime deployments",
+      "Architected and implemented the Patient Management module within a distributed HealthCare Management System using a microservices architecture, ensuring loose coupling, independent scalability, and fault isolation",
+      "Designed MongoDB document schemas optimized for high-throughput patient data operations, enabling efficient CRUD workflows and reducing query latency",
+      "Exposed secure RESTful API endpoints backed by JWT-based authentication and role-based authorization, ensuring HIPAA-aligned data access controls and secure inter-service interaction",
+      "Integrated RabbitMQ as an event-driven messaging layer for asynchronous, reliable communication between microservices, improving throughput and system resilience under load",
+      "Containerized and deployed the full microservices stack using Docker and Kubernetes, implementing auto-scaling, health checks, and rolling updates to ensure high availability and streamlined CI/CD workflows",
     ],
   },
   {
     id: "bj-medical",
-    role: "Machine Learning Intern",
+    role: "Data Analysis Intern",
     company: "BJ Medical College",
     location: "Remote",
     startDate: "June 2022",
     endDate: "July 2022",
     techStack: ["Python", "Pandas", "Matplotlib"],
     bullets: [
-      "Collaborated with Covid-19 Rural Contact Tracing team, analyzing 50,000+ data points to identify outbreak patterns and inform public health decisions during critical pandemic phases",
-      "Conducted comprehensive exploratory data analysis (EDA) on rural Covid data, uncovering 3 key risk factors that improved contact tracing accuracy by 25%",
-      "Systematically categorized signs, symptoms, and trigger events across 15+ rural districts, creating actionable insights that accelerated epidemic response protocols and resource allocation",
+      "Assisted the Rural COVID-19 Contact Tracing Team Coordinator in analyzing outbreak patterns and mapping high-risk transmission clusters across villages",
+      "Performed exploratory data analysis (EDA) on rural COVID-19 datasets using Python, Pandas, and Matplotlib to identify anomalies, demographic trends, and data-quality gaps",
+      "Developed feature categories for clinical symptoms, exposure triggers, and transmission indicators, enabling more accurate classification of rural epidemic patterns and supporting data-driven decision-making",
     ],
   },
   {
@@ -217,11 +217,25 @@ export const education = [
     period: "2020 - 2024",
     grade: "CGPA: 8.11/10",
     highlights: [
-      "Data Structures & Algorithms",
-      "Database Systems",
-      "Machine Learning & Deep Learning",
-      "Computer Networks",
+      "Data Structures and Algorithms",
+      "Design and Analysis of Algorithms",
+      "Software Engineering",
       "Operating Systems",
+      "Database Systems",
+      "Computer Networks",
+    ],
+    additionalCourses: [
+      "Machine Learning",
+      "Deep Learning",
+      "Cybersecurity",
+      "Introduction to Computer Science",
+      "Probability and Statistics",
+      "Linear Algebra and Calculus",
+      "Maths for Computing",
+      "Signals and Systems",
+      "Computer Architecture",
+      "Digital Design",
+      "Embedded Systems",
     ],
   },
   {
@@ -242,11 +256,11 @@ export const education = [
 export const publications = [
   {
     id: "thyroid-paper",
-    title: "Deep Learning-Based Diagnosis of Thyroid Tumors",
+    title: "Deep Learning-Based Diagnosis of Thyroid Tumors Using Histopathology Images",
     venue: "SPIE Medical Imaging 2024",
     track: "Computer-Aided Diagnosis",
     year: "2024",
-    url: null,
+    url: "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12927/129273D/Deep-learning-based-diagnosis-of-thyroid-tumors-using-histopathology-images/10.1117/12.3006242.short",
   },
 ];
 
@@ -256,23 +270,23 @@ export const publications = [
  */
 export const blogPosts = [
   {
-    id: "distributed-systems-scale",
-    title: "Building for Scale: Lessons from Distributed Systems",
-    excerpt: "Key insights from designing microservices that handle millions of requests. Learn how to think about consistency, availability, and partition tolerance in real-world applications.",
+    id: "microservices-scale",
+    title: "Building Scalable Microservices: Lessons from Enterprise Development",
+    excerpt: "Key insights from designing Spring Boot microservices for enterprise banking workflows. Learn practical approaches to API design, performance optimization, and handling high-volume transactions.",
     date: "2024-11-15",
     readTime: "5 min read",
     category: "System Design",
-    tags: ["Distributed Systems", "Microservices", "Scalability"],
+    tags: ["Microservices", "Spring Boot", "Enterprise Architecture"],
     // Future: contentMarkdown: "path/to/markdown/file.md"
   },
   {
-    id: "ml-production-challenges",
-    title: "Taking ML Models to Production: Beyond Jupyter Notebooks",
-    excerpt: "The gap between a working prototype and production-ready ML system is vast. Discover the challenges of model serving, monitoring, and maintaining accuracy over time.",
+    id: "llm-integration-production",
+    title: "Integrating LLMs in Production: Real-time Feedback at Scale",
+    excerpt: "Building Prompt'athon taught me the challenges of integrating LLMs in enterprise applications. From managing API costs to achieving sub-second response times, here's what worked.",
     date: "2024-10-28",
     readTime: "6 min read",
-    category: "Machine Learning",
-    tags: ["ML Engineering", "Production", "MLOps"],
+    category: "AI/ML",
+    tags: ["LLM", "AI Integration", "Performance Optimization"],
     // Future: contentMarkdown: "path/to/markdown/file.md"
   },
   {

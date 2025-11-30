@@ -14,6 +14,7 @@ interface ContactSectionProps {
   email: string;
   phone: string;
   location: string;
+  web3formsKey: string;
   social: {
     linkedin: string;
     github: string;
@@ -24,6 +25,7 @@ export default function ContactSection({
   email,
   phone,
   location,
+  web3formsKey,
   social,
 }: ContactSectionProps) {
   const [formData, setFormData] = useState({
@@ -65,16 +67,37 @@ export default function ContactSection({
 
     setIsSubmitting(true);
 
-    // TODO: Replace with actual API call
-    console.log("Form submitted:", formData);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: web3formsKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Portfolio Contact from ${formData.name}`,
+        }),
+      });
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      const result = await response.json();
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
-
-    setTimeout(() => setIsSubmitted(false), 5000);
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to send message. Please try emailing me directly at " + email);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
