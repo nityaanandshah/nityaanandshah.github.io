@@ -147,7 +147,12 @@ export default function EducationSection({
   publications,
 }: EducationSectionProps) {
   return (
-    <section id="education" className="py-24 sm:py-32 px-6">
+    <section id="education" className="py-24 sm:py-32 px-6 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-fuchsia-600/10 rounded-full blur-3xl" />
+      </div>
       <div className="max-w-6xl mx-auto">
         <SectionHeader title="Education & Publications" />
 

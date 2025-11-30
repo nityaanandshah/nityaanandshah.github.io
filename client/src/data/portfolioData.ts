@@ -18,7 +18,7 @@ export const personalInfo = {
   email: "nityashah2801@gmail.com",
   phone: "+91 7621070728",
   location: "Pune, India",
-  tagline: "Building scalable systems and solving real-world problems through thoughtful engineering, clean design, and data-driven decision making.",
+  tagline: "Crafting scalable systems and turning complex problems into elegant solutions ✨",
   resumeUrl: "https://drive.google.com/file/d/1cgbMDfs84YO1EYogG_cvcD37rqoaC6N_/view?usp=sharing",
   web3formsKey: "02981efd-1b2c-4c78-aed9-75c5b4eb114b", // Web3Forms access key
   social: {
@@ -28,12 +28,13 @@ export const personalInfo = {
 };
 
 export const aboutContent = {
-  summary: `I'm a Software Engineer at BNY with a strong foundation in computer science from IIT Jodhpur. 
-  I specialize in building scalable full-stack applications—from Spring Boot microservices that streamline enterprise workflows to intuitive Angular frontends that improve user productivity. 
-  At BNY, I've designed systems that reduce manual processing time by 40% and built Prompt'athon, an AI-powered platform supporting 1,000+ concurrent users with real-time LLM feedback. 
+  summary: `Hey! I'm a Software Engineer at BNY with a strong foundation in computer science from IIT Jodhpur. 
+  I specialize in building scalable full-stack applications—from Spring Boot microservices that streamline enterprise workflows to intuitive Angular frontends that improve user productivity by 30%. 
   
+  At BNY, I've designed systems that slash manual processing time by 40% and built Prompt'athon, an AI-powered platform supporting 1,000+ concurrent users with real-time LLM feedback. 
   Previously, I architected a microservices-based Healthcare Management System with Docker/Kubernetes deployment, and contributed to rural COVID-19 contact tracing through data analysis. 
-  I'm passionate about solving real-world problems through clean code, thoughtful architecture, and data-driven solutions.`,
+  
+  I'm passionate about transforming ideas into impactful solutions through clean code, thoughtful architecture, and data-driven insights.`,
   highlights: [
     "Full Stack Development with Spring Boot, Angular, and React",
     "Microservices Architecture & Cloud Deployment",

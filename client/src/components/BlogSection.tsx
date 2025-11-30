@@ -21,7 +21,12 @@ interface BlogSectionProps {
 
 export default function BlogSection({ posts }: BlogSectionProps) {
   return (
-    <section id="blog" className="py-24 sm:py-32 px-6">
+    <section id="blog" className="py-24 sm:py-32 px-6 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-fuchsia-600/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-[450px] h-[450px] bg-pink-600/10 rounded-full blur-3xl" />
+      </div>
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="Latest Thoughts"

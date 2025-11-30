@@ -111,11 +111,16 @@ export default function ContactSection({
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 px-6 bg-secondary/30">
+    <section id="contact" className="py-24 sm:py-32 px-6 bg-secondary/30 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-fuchsia-600/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-pink-600/15 rounded-full blur-3xl" />
+      </div>
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          title="Get In Touch"
-          description="I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology. Feel free to reach out!"
+          title="Let's Build Something Amazing"
+          description="Got an exciting project or opportunity? I'm always open to collaborating on innovative ideas. Let's turn your vision into reality! ✨"
         />
 
         <div className="grid lg:grid-cols-2 gap-16">

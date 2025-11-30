@@ -38,7 +38,12 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-24 sm:py-32 px-6 bg-secondary/30">
+    <section id="projects" className="py-24 sm:py-32 px-6 bg-secondary/30 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-pink-600/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-0 w-[450px] h-[450px] bg-purple-600/15 rounded-full blur-3xl" />
+      </div>
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="Featured Projects"
