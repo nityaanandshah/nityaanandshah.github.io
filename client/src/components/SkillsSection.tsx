@@ -24,11 +24,11 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
 
   const getColorClasses = (color: string) => {
     const colorMap: Record<string, string> = {
-      purple: "hover:border-purple-500/50 hover:bg-purple-500/10 hover:shadow-purple-500/30",
-      fuchsia: "hover:border-fuchsia-500/50 hover:bg-fuchsia-500/10 hover:shadow-fuchsia-500/30",
-      pink: "hover:border-pink-500/50 hover:bg-pink-500/10 hover:shadow-pink-500/30",
-      rose: "hover:border-rose-500/50 hover:bg-rose-500/10 hover:shadow-rose-500/30",
-      violet: "hover:border-violet-500/50 hover:bg-violet-500/10 hover:shadow-violet-500/30",
+      purple: "hover:border-purple-400 hover:bg-purple-500/20 hover:shadow-lg hover:shadow-purple-500/50",
+      fuchsia: "hover:border-fuchsia-400 hover:bg-fuchsia-500/20 hover:shadow-lg hover:shadow-fuchsia-500/50",
+      pink: "hover:border-pink-400 hover:bg-pink-500/20 hover:shadow-lg hover:shadow-pink-500/50",
+      rose: "hover:border-rose-400 hover:bg-rose-500/20 hover:shadow-lg hover:shadow-rose-500/50",
+      violet: "hover:border-violet-400 hover:bg-violet-500/20 hover:shadow-lg hover:shadow-violet-500/50",
     };
     return colorMap[color] || colorMap.purple;
   };
@@ -37,8 +37,8 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
     <section id="skills" className="py-24 sm:py-32 px-6 bg-secondary/30 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-fuchsia-600/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-purple-600/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-fuchsia-500/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[550px] h-[550px] bg-purple-500/30 rounded-full blur-3xl" />
       </div>
       <div className="max-w-6xl mx-auto">
         <SectionHeader title="Skills & Technologies" />
@@ -61,7 +61,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
                         delay: categoryIndex * 0.1 + skillIndex * 0.05,
                         duration: 0.3,
                       }}
-                      whileHover={{ scale: 1.08, y: -2 }}
+                      whileHover={{ scale: 1.1, y: -4 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <Badge

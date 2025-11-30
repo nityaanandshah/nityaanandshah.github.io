@@ -41,8 +41,8 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
     <section id="projects" className="py-24 sm:py-32 px-6 bg-secondary/30 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-pink-600/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-0 w-[450px] h-[450px] bg-purple-600/15 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-pink-500/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-0 w-[550px] h-[550px] bg-purple-500/30 rounded-full blur-3xl" />
       </div>
       <div className="max-w-6xl mx-auto">
         <SectionHeader

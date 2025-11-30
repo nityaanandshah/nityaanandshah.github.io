@@ -114,8 +114,8 @@ export default function ContactSection({
     <section id="contact" className="py-24 sm:py-32 px-6 bg-secondary/30 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-fuchsia-600/15 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-pink-600/15 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-fuchsia-500/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-[550px] h-[550px] bg-pink-500/30 rounded-full blur-3xl" />
       </div>
       <div className="max-w-6xl mx-auto">
         <SectionHeader

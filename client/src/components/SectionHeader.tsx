@@ -16,7 +16,7 @@ export default function SectionHeader({ title, description }: SectionHeaderProps
           </h2>
         </div>
         <motion.div
-          className="h-1 w-12 bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 rounded-full origin-left shadow-lg shadow-purple-500/40"
+          className="h-1.5 w-16 bg-gradient-to-r from-purple-400 via-fuchsia-400 to-pink-400 rounded-full origin-left shadow-xl shadow-purple-500/60"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}

@@ -68,9 +68,9 @@ export default function HeroSection({
     <section className="min-h-screen flex items-center justify-center pt-16 px-6 relative overflow-hidden">
       {/* Background gradient glow effects */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-purple-600/30 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] bg-pink-600/25 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-fuchsia-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 -left-1/4 w-[700px] h-[700px] bg-purple-500/50 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-pink-500/45 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-fuchsia-500/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       <motion.div
@@ -82,8 +82,8 @@ export default function HeroSection({
         <div className="space-y-8">
           <motion.div variants={item} className="inline-block">
             <motion.span
-              className="text-sm font-medium tracking-wide bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 px-5 py-2.5 rounded-full shadow-lg shadow-purple-500/30"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.4)" }}
+              className="text-sm font-medium tracking-wide bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 px-5 py-2.5 rounded-full shadow-2xl shadow-purple-500/60"
+              whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(168, 85, 247, 0.7)" }}
             >
               <span className="text-white">✨ Available for opportunities</span>
             </motion.span>
@@ -114,11 +114,11 @@ export default function HeroSection({
             variants={item}
             className="flex flex-wrap items-center justify-center gap-4 pt-6"
           >
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
                 onClick={scrollToProjects}
-                className="gap-2 h-12 px-6 text-base bg-gradient-to-r from-purple-600 via-fuchsia-600 to-pink-600 hover:from-purple-700 hover:via-fuchsia-700 hover:to-pink-700 shadow-lg shadow-purple-500/40 text-white"
+                className="gap-2 h-12 px-6 text-base bg-gradient-to-r from-purple-500 via-fuchsia-500 to-pink-500 hover:from-purple-600 hover:via-fuchsia-600 hover:to-pink-600 shadow-2xl shadow-purple-500/60 text-white"
                 data-testid="button-view-projects"
               >
                 View Projects
@@ -131,12 +131,12 @@ export default function HeroSection({
               </Button>
             </motion.div>
 
-            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 variant="outline"
                 size="lg"
                 asChild
-                className="gap-2 h-12 px-6 text-base border-purple-500/50 hover:bg-purple-500/10 hover:border-purple-500"
+                className="gap-2 h-12 px-6 text-base border-purple-400/70 hover:bg-purple-500/20 hover:border-purple-400 hover:shadow-xl hover:shadow-purple-500/30"
                 data-testid="button-view-resume"
               >
                 <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
@@ -168,10 +168,10 @@ export default function HeroSection({
               href={social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3.5 rounded-full bg-secondary/50 backdrop-blur-sm hover:bg-gradient-to-br hover:from-purple-500/20 hover:to-fuchsia-500/20 border border-border hover:border-purple-500/50 transition-all duration-300"
+              className="p-3.5 rounded-full bg-secondary/50 backdrop-blur-sm hover:bg-gradient-to-br hover:from-purple-500/30 hover:to-fuchsia-500/30 border border-purple-500/40 hover:border-purple-400 transition-all duration-300"
               aria-label="GitHub Profile"
-              whileHover={{ scale: 1.1, rotate: 5, boxShadow: "0 10px 30px rgba(168, 85, 247, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.15, rotate: 5, boxShadow: "0 15px 40px rgba(168, 85, 247, 0.6)" }}
+              whileTap={{ scale: 0.9 }}
               data-testid="link-github"
             >
               <SiGithub className="h-5 w-5" />
@@ -180,10 +180,10 @@ export default function HeroSection({
               href={social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3.5 rounded-full bg-secondary/50 backdrop-blur-sm hover:bg-gradient-to-br hover:from-fuchsia-500/20 hover:to-pink-500/20 border border-border hover:border-fuchsia-500/50 transition-all duration-300"
+              className="p-3.5 rounded-full bg-secondary/50 backdrop-blur-sm hover:bg-gradient-to-br hover:from-fuchsia-500/30 hover:to-pink-500/30 border border-fuchsia-500/40 hover:border-fuchsia-400 transition-all duration-300"
               aria-label="LinkedIn Profile"
-              whileHover={{ scale: 1.1, rotate: -5, boxShadow: "0 10px 30px rgba(217, 70, 239, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.15, rotate: -5, boxShadow: "0 15px 40px rgba(217, 70, 239, 0.6)" }}
+              whileTap={{ scale: 0.9 }}
               data-testid="link-linkedin"
             >
               <SiLinkedin className="h-5 w-5" />
