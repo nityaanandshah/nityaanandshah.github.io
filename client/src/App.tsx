@@ -4,12 +4,14 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Portfolio from "@/pages/Portfolio";
+import ColorShowcase from "@/pages/ColorShowcase";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Portfolio} />
+      <Route path="/colors" component={ColorShowcase} />
       <Route component={NotFound} />
     </Switch>
   );

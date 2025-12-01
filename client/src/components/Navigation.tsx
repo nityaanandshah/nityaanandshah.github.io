@@ -145,7 +145,7 @@ export default function Navigation({ links, name }: NavigationProps) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   onClick={() => scrollToSection(link.id)}
-                  className={`block w-full text-left px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                  className={`block w-full text-left px-4 py-3 text-sm font-medium rounded-md transition-colors ${
                     activeSection === link.id
                       ? "text-foreground bg-secondary"
                       : "text-muted-foreground hover:text-foreground hover:bg-secondary"

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, MapPin, Calendar } from "lucide-react";
+import { IoBriefcase, IoLocation, IoCalendar } from "react-icons/io5";
 import AnimatedSection from "./AnimatedSection";
 import AnimatedCard from "./AnimatedCard";
 import SectionHeader from "./SectionHeader";
@@ -23,12 +23,7 @@ interface ExperienceSectionProps {
 
 export default function ExperienceSection({ experience }: ExperienceSectionProps) {
   return (
-    <section id="experience" className="py-24 sm:py-32 px-6 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-0 w-[550px] h-[550px] bg-pink-500/25 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-0 w-[500px] h-[500px] bg-purple-500/25 rounded-full blur-3xl" />
-      </div>
+    <section id="experience" className="py-32 sm:py-40 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <SectionHeader title="Work Experience" />
 
@@ -41,48 +36,49 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
             transition={{ duration: 1, delay: 0.3 }}
           />
 
-          <div className="space-y-10">
+          <div className="space-y-12">
             {experience.map((item, index) => (
               <div
                 key={item.id}
-                className="relative md:pl-10"
+                className="relative md:pl-12"
                 data-testid={`card-experience-${item.id}`}
               >
-                <motion.div
-                  className="absolute left-0 top-8 w-2.5 h-2.5 bg-foreground rounded-full hidden md:block -translate-x-1"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 + index * 0.1, type: "spring" }}
-                />
+                  <motion.div
+                    className="absolute left-0 top-10 w-3 h-3 bg-primary rounded-full hidden md:block -translate-x-1.5"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + index * 0.1, type: "spring" }}
+                    style={{ boxShadow: "0 0 12px rgba(236, 72, 153, 0.6), 0 0 20px rgba(236, 72, 153, 0.3)" }}
+                  />
 
                 <AnimatedCard index={index}>
-                  <Card className="border-card-border bg-card/50 backdrop-blur-sm transition-shadow hover:shadow-lg">
-                    <CardHeader className="pb-4">
-                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                        <div className="space-y-2">
-                          <h3 className="font-semibold text-xl font-display">{item.role}</h3>
-                          <div className="flex items-center gap-2 text-foreground font-medium">
-                            <Briefcase className="h-4 w-4" />
+                  <Card className="border-card-border bg-card backdrop-blur-sm transition-all hover:shadow-[0_15px_40px_rgb(236,72,153,0.2)]" style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.12), 0 0 12px rgba(236, 72, 153, 0.08)" }}>
+                    <CardHeader className="pb-5">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
+                        <div className="space-y-3">
+                          <h3 className="font-bold text-2xl font-display">{item.role}</h3>
+                          <div className="flex items-center gap-3 text-foreground font-semibold">
+                            <IoBriefcase className="h-5 w-5" />
                             <span>{item.company}</span>
                           </div>
                         </div>
-                        <div className="flex flex-col items-start sm:items-end gap-1.5 text-sm text-muted-foreground">
+                        <div className="flex flex-col items-start sm:items-end gap-2 text-sm text-muted-foreground">
                           <div className="flex items-center gap-2">
-                            <Calendar className="h-4 w-4" />
+                            <IoCalendar className="h-4 w-4" />
                             <span>
                               {item.startDate} - {item.endDate}
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <MapPin className="h-4 w-4" />
+                            <IoLocation className="h-4 w-4" />
                             <span>{item.location}</span>
                           </div>
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="space-y-5">
-                      <div className="flex flex-wrap gap-2">
+                    <CardContent className="space-y-6">
+                      <div className="flex flex-wrap gap-2.5">
                         {item.techStack.map((tech, techIndex) => (
                           <motion.div
                             key={tech}
@@ -100,11 +96,11 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
                           </motion.div>
                         ))}
                       </div>
-                      <ul className="space-y-3">
+                      <ul className="space-y-3.5">
                         {item.bullets.map((bullet, bulletIndex) => (
                           <motion.li
                             key={bulletIndex}
-                            className="text-sm text-muted-foreground pl-5 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-muted-foreground/40 before:rounded-full"
+                            className="text-sm text-muted-foreground pl-5 relative before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-foreground/40 before:rounded-full"
                             initial={{ opacity: 0, x: -10 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}

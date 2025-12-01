@@ -22,35 +22,23 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
     { label: "Tools & Technologies", items: skills.tools, color: "violet" },
   ];
 
-  const getColorClasses = (color: string) => {
-    const colorMap: Record<string, string> = {
-      purple: "hover:border-purple-400 hover:bg-purple-500/20 hover:shadow-lg hover:shadow-purple-500/50",
-      fuchsia: "hover:border-fuchsia-400 hover:bg-fuchsia-500/20 hover:shadow-lg hover:shadow-fuchsia-500/50",
-      pink: "hover:border-pink-400 hover:bg-pink-500/20 hover:shadow-lg hover:shadow-pink-500/50",
-      rose: "hover:border-rose-400 hover:bg-rose-500/20 hover:shadow-lg hover:shadow-rose-500/50",
-      violet: "hover:border-violet-400 hover:bg-violet-500/20 hover:shadow-lg hover:shadow-violet-500/50",
-    };
-    return colorMap[color] || colorMap.purple;
+  const getColorClasses = (_color: string) => {
+    return "hover:bg-card hover:border-primary";
   };
 
   return (
-    <section id="skills" className="py-24 sm:py-32 px-6 bg-secondary/30 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-fuchsia-500/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[550px] h-[550px] bg-purple-500/30 rounded-full blur-3xl" />
-      </div>
+    <section id="skills" className="py-32 sm:py-40 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <SectionHeader title="Skills & Technologies" />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-16">
           {categories.map((category, categoryIndex) => (
             <AnimatedSection key={category.label} delay={categoryIndex * 0.1}>
-              <div className="space-y-5">
-                <h3 className="font-semibold text-lg text-foreground font-display">
+              <div className="space-y-6">
+                <h3 className="font-bold text-xl text-foreground font-display">
                   {category.label}
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3.5">
                   {category.items.map((skill, skillIndex) => (
                     <motion.div
                       key={skill}
@@ -66,7 +54,7 @@ export default function SkillsSection({ skills }: SkillsSectionProps) {
                     >
                       <Badge
                         variant="secondary"
-                        className={`font-mono text-sm px-4 py-2 cursor-default bg-background border border-border transition-all duration-300 hover:shadow-lg ${getColorClasses(category.color)}`}
+                        className={`font-mono text-sm px-5 py-2.5 cursor-default bg-secondary border border-border transition-all duration-300 shadow-sm hover:shadow ${getColorClasses(category.color)}`}
                         data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, "-")}`}
                       >
                         {skill}

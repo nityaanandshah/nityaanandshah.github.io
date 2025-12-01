@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MapPin, Phone, Send, CheckCircle2 } from "lucide-react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
+import { IoMail, IoLocation, IoCall, IoSend, IoCheckmarkCircle } from "react-icons/io5";
 import AnimatedSection from "./AnimatedSection";
 import SectionHeader from "./SectionHeader";
 
@@ -86,9 +86,9 @@ export default function ContactSection({
       const result = await response.json();
 
       if (result.success) {
-        setIsSubmitted(true);
-        setFormData({ name: "", email: "", message: "" });
-        setTimeout(() => setIsSubmitted(false), 5000);
+    setIsSubmitted(true);
+    setFormData({ name: "", email: "", message: "" });
+    setTimeout(() => setIsSubmitted(false), 5000);
       } else {
         throw new Error("Form submission failed");
       }
@@ -111,37 +111,33 @@ export default function ContactSection({
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 px-6 bg-secondary/30 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-fuchsia-500/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-[550px] h-[550px] bg-pink-500/30 rounded-full blur-3xl" />
-      </div>
+    <section id="contact" className="py-32 sm:py-40 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="Let's Build Something Amazing"
           description="Got an exciting project or opportunity? I'm always open to collaborating on innovative ideas. Let's turn your vision into reality! ✨"
         />
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-20">
           <AnimatedSection delay={0.1}>
-            <div className="space-y-10">
-              <div className="space-y-6">
+            <div className="space-y-12">
+              <div className="space-y-8">
                 <motion.a
                   href={`mailto:${email}`}
-                  className="flex items-center gap-5 group"
+                  className="flex items-center gap-6 group"
                   whileHover={{ x: 4 }}
                   data-testid="link-contact-email"
                 >
                   <motion.div
-                    className="p-4 rounded-xl bg-secondary text-foreground group-hover:bg-foreground group-hover:text-background transition-colors"
+                    className="p-5 rounded-2xl bg-secondary text-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all"
                     whileHover={{ scale: 1.1, rotate: 5 }}
+                    style={{ transition: "all 0.3s ease" }}
                   >
-                    <Mail className="h-5 w-5" />
+                    <IoMail className="h-6 w-6" />
                   </motion.div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="font-medium group-hover:text-foreground transition-colors">
+                    <p className="text-sm text-muted-foreground font-medium">Email</p>
+                    <p className="font-semibold text-lg group-hover:text-foreground transition-colors mt-1">
                       {email}
                     </p>
                   </div>
@@ -149,69 +145,70 @@ export default function ContactSection({
 
                 <motion.a
                   href={`tel:${phone}`}
-                  className="flex items-center gap-5 group"
+                  className="flex items-center gap-6 group"
                   whileHover={{ x: 4 }}
                   data-testid="link-contact-phone"
                 >
                   <motion.div
-                    className="p-4 rounded-xl bg-secondary text-foreground group-hover:bg-foreground group-hover:text-background transition-colors"
+                    className="p-5 rounded-2xl bg-secondary text-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all"
                     whileHover={{ scale: 1.1, rotate: -5 }}
+                    style={{ transition: "all 0.3s ease" }}
                   >
-                    <Phone className="h-5 w-5" />
+                    <IoCall className="h-6 w-6" />
                   </motion.div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Phone</p>
-                    <p className="font-medium group-hover:text-foreground transition-colors">
+                    <p className="text-sm text-muted-foreground font-medium">Phone</p>
+                    <p className="font-semibold text-lg group-hover:text-foreground transition-colors mt-1">
                       {phone}
                     </p>
                   </div>
                 </motion.a>
 
                 <motion.div
-                  className="flex items-center gap-5"
+                  className="flex items-center gap-6"
                   whileHover={{ x: 4 }}
                 >
                   <motion.div
-                    className="p-4 rounded-xl bg-secondary text-foreground"
+                    className="p-5 rounded-2xl bg-secondary text-foreground shadow-sm"
                     whileHover={{ scale: 1.1 }}
                   >
-                    <MapPin className="h-5 w-5" />
+                    <IoLocation className="h-6 w-6" />
                   </motion.div>
                   <div>
-                    <p className="text-sm text-muted-foreground">Location</p>
-                    <p className="font-medium">{location}</p>
+                    <p className="text-sm text-muted-foreground font-medium">Location</p>
+                    <p className="font-semibold text-lg mt-1">{location}</p>
                   </div>
                 </motion.div>
               </div>
 
-              <div className="pt-6">
-                <p className="text-sm text-muted-foreground mb-5">
+              <div className="pt-8">
+                <p className="text-sm text-muted-foreground mb-6 font-medium">
                   Connect with me on social media
                 </p>
-                <div className="flex gap-4">
+                <div className="flex gap-5">
                   <motion.a
                     href={social.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-4 rounded-xl bg-card border border-card-border hover:bg-secondary transition-colors"
+                    className="p-5 rounded-2xl bg-secondary hover:bg-muted transition-all shadow-sm"
                     aria-label="GitHub Profile"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     data-testid="link-contact-github"
                   >
-                    <SiGithub className="h-5 w-5" />
+                    <SiGithub className="h-6 w-6" />
                   </motion.a>
                   <motion.a
                     href={social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-4 rounded-xl bg-card border border-card-border hover:bg-secondary transition-colors"
+                    className="p-5 rounded-2xl bg-secondary hover:bg-muted transition-all shadow-sm"
                     aria-label="LinkedIn Profile"
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     data-testid="link-contact-linkedin"
                   >
-                    <SiLinkedin className="h-5 w-5" />
+                    <SiLinkedin className="h-6 w-6" />
                   </motion.a>
                 </div>
               </div>
@@ -220,8 +217,8 @@ export default function ContactSection({
 
           <AnimatedSection delay={0.2}>
             <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.2 }}>
-              <Card className="border-card-border bg-card/50 backdrop-blur-sm">
-                <CardContent className="p-8">
+              <Card className="border-card-border bg-card backdrop-blur-sm" style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.12), 0 0 12px rgba(236, 72, 153, 0.08)" }}>
+                <CardContent className="p-10">
                   <AnimatePresence mode="wait">
                     {isSubmitted ? (
                       <motion.div
@@ -232,12 +229,12 @@ export default function ContactSection({
                         className="flex flex-col items-center justify-center py-16 text-center space-y-5"
                       >
                         <motion.div
-                          className="p-4 rounded-full bg-green-500/10 text-green-500"
+                          className="p-5 rounded-full bg-green-500/10 text-green-500 shadow-md"
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           transition={{ type: "spring", delay: 0.2 }}
                         >
-                          <CheckCircle2 className="h-10 w-10" />
+                          <IoCheckmarkCircle className="h-12 w-12" />
                         </motion.div>
                         <div className="space-y-2">
                           <h3 className="font-semibold text-xl font-display">Message Sent!</h3>
@@ -333,14 +330,15 @@ export default function ContactSection({
                         </div>
 
                         <motion.div
-                          whileHover={{ scale: 1.01 }}
-                          whileTap={{ scale: 0.99 }}
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          whileTap={{ scale: 0.98 }}
                         >
                           <Button
                             type="submit"
-                            className="w-full gap-2 h-12 text-base"
+                            className="w-full gap-3 h-14 text-base font-semibold transition-all hover:shadow-[0_8px_30px_rgba(236,72,153,0.25)]"
                             disabled={isSubmitting}
                             data-testid="button-contact-submit"
+                            style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.2), 0 0 20px rgba(236, 72, 153, 0.1)" }}
                           >
                             {isSubmitting ? (
                               <motion.span
@@ -351,7 +349,7 @@ export default function ContactSection({
                               </motion.span>
                             ) : (
                               <>
-                                <Send className="h-4 w-4" />
+                                <IoSend className="h-5 w-5" />
                                 Send Message
                               </>
                             )}

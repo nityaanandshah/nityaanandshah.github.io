@@ -30,10 +30,11 @@ export default function AnimatedCard({
         ease: [0.25, 0.4, 0.25, 1],
       }}
       whileHover={{
-        y: -4,
-        transition: { duration: 0.2, ease: "easeOut" },
+        y: -8,
+        transition: { type: "spring", stiffness: 300, damping: 20 },
       }}
       className={className}
+      style={{ pointerEvents: "auto" }}
     >
       {children}
     </motion.div>

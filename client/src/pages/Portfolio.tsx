@@ -24,7 +24,7 @@ import {
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen text-foreground">
       <Navigation links={navLinks} name={personalInfo.name} />
 
       <main>

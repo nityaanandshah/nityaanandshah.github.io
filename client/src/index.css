@@ -2,60 +2,144 @@
 @tailwind components;
 @tailwind utilities;
 
-/* LIGHT MODE - Enhanced with refined accent colors */
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * STARRY NIGHT SOFT GRADIENT COLOR PALETTE
+ * ═══════════════════════════════════════════════════════════════════════════
+ * 
+ * Inspired by the cosmic beauty of starry nights, this palette features 
+ * sophisticated blue, indigo, violet, and purple tones that create an 
+ * elegant, professional aesthetic with cosmic depth.
+ * 
+ * Reference: https://gradientshub.com/freebies/gradients/46-starry-night-soft-gradient/
+ * 
+ * ───────────────────────────────────────────────────────────────────────────
+ * COLOR BREAKDOWN (HSL)
+ * ───────────────────────────────────────────────────────────────────────────
+ * 
+ * LIGHT MODE:
+ * • Backgrounds:      240° 20% 99%  (Very light blue-white)
+ * • Cards:            240° 25% 98%  (Soft periwinkle white)
+ * • Borders:          240° 15-18% 88-90% (Subtle blue-gray borders)
+ * • Primary Actions:  260° 70% 55%  (Rich indigo-purple)
+ * • Accent:           280° 65% 60%  (Vibrant violet)
+ * • Muted:            240° 15% 96%  (Subtle blue-gray)
+ * • Foreground:       240° 30% 12%  (Deep navy blue-black)
+ * 
+ * DARK MODE:
+ * • Backgrounds:      245° 50% 8%   (Deep cosmic blue)
+ * • Cards:            248° 45% 10%  (Rich dark indigo)
+ * • Borders:          245° 30-35% 15-18% (Subtle dark borders)
+ * • Primary Actions:  260° 75% 62%  (Glowing indigo)
+ * • Accent:           280° 68% 65%  (Bright violet)
+ * • Muted:            245° 30% 16%  (Dark blue-gray)
+ * • Foreground:       240° 20% 98%  (Soft white with blue tint)
+ * 
+ * ───────────────────────────────────────────────────────────────────────────
+ * USAGE GUIDE
+ * ───────────────────────────────────────────────────────────────────────────
+ * 
+ * BUTTONS:
+ *   Primary:    260° 70% 55% (light) / 260° 75% 62% (dark) - Call-to-action
+ *   Secondary:  245° 18% 95% (light) / 245° 28% 18% (dark) - Less emphasis
+ *   Accent:     280° 65% 60% (light) / 280° 68% 65% (dark) - Special actions
+ * 
+ * CARDS:
+ *   Default:    240° 25% 98% (light) / 248° 45% 10% (dark) - Content containers
+ *   Elevated:   Add --elevate-1 or --elevate-2 overlays for depth
+ *   Borders:    240° 18% 88% (light) / 245° 35% 15% (dark)
+ * 
+ * BACKGROUNDS:
+ *   Main:       240° 20% 99% (light) / 245° 50% 8% (dark)  - Page background
+ *   Sidebar:    245° 22% 97% (light) / 250° 40% 12% (dark) - Navigation areas
+ *   Popover:    240° 22% 98% (light) / 248° 42% 13% (dark) - Floating elements
+ * 
+ * CHARTS/DATA VISUALIZATION:
+ *   chart-1:    260° 70% 55% - Indigo (primary data)
+ *   chart-2:    270° 65% 58% - Purple (secondary data)
+ *   chart-3:    280° 60% 60% - Violet (tertiary data)
+ *   chart-4:    245° 68% 52% - Blue-Indigo (quaternary data)
+ *   chart-5:    220° 75% 58% - Sky Blue (quinary data)
+ * 
+ * ───────────────────────────────────────────────────────────────────────────
+ * COLOR SCIENCE NOTES
+ * ───────────────────────────────────────────────────────────────────────────
+ * 
+ * Hue Range: 220°-280° (Blue through Violet family)
+ *   • 220° = Sky blue (data visualization accent)
+ *   • 240° = Pure blue (base/backgrounds)
+ *   • 245° = Blue-indigo (cards, borders)
+ *   • 260° = Indigo (primary actions)
+ *   • 270° = Purple (secondary accent)
+ *   • 280° = Violet (tertiary accent)
+ * 
+ * Saturation Strategy:
+ *   • Backgrounds: 15-25% (light) / 30-50% (dark) - cosmic depth
+ *   • Accents: 65-75% (vibrant but elegant)
+ *   • Text: 12-30% (readable with personality)
+ * 
+ * Lightness Strategy:
+ *   • Light mode: Very high lightness (95-99%) for airiness
+ *   • Dark mode: Low lightness (8-18%) for depth
+ *   • Actions: Mid-range (55-65%) for visibility in both modes
+ * 
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+
+/* LIGHT MODE - Starry Night Soft Gradient (Blue, Indigo, Violet, Purple) */
 :root {
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
   --opaque-button-border-intensity: -8;
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
-  --background: 0 0% 99%;
-  --foreground: 222 47% 11%;
-  --border: 220 13% 90%;
-  --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
-  --card-border: 220 13% 92%;
-  --sidebar: 220 13% 96%;
-  --sidebar-foreground: 220 13% 13%;
-  --sidebar-border: 220 13% 92%;
-  --sidebar-primary: 217 91% 60%;
-  --sidebar-primary-foreground: 210 40% 98%;
-  --sidebar-accent: 220 14% 91%;
-  --sidebar-accent-foreground: 220 13% 13%;
-  --sidebar-ring: 217 91% 60%;
-  --popover: 220 13% 94%;
-  --popover-foreground: 220 13% 13%;
-  --popover-border: 220 13% 90%;
-  --primary: 222 47% 11%;
+  --background: 240 20% 99%;
+  --foreground: 240 30% 12%;
+  --border: 240 15% 90%;
+  --card: 240 25% 98%;
+  --card-foreground: 240 30% 12%;
+  --card-border: 240 18% 88%;
+  --sidebar: 245 22% 97%;
+  --sidebar-foreground: 240 30% 12%;
+  --sidebar-border: 240 18% 90%;
+  --sidebar-primary: 260 70% 55%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 245 20% 94%;
+  --sidebar-accent-foreground: 240 30% 12%;
+  --sidebar-ring: 260 70% 55%;
+  --popover: 240 22% 98%;
+  --popover-foreground: 240 30% 12%;
+  --popover-border: 240 18% 90%;
+  --primary: 260 70% 55%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 220 14% 96%;
-  --secondary-foreground: 222 47% 11%;
-  --muted: 220 14% 96%;
-  --muted-foreground: 220 9% 44%;
-  --accent: 217 91% 60%;
-  --accent-foreground: 210 40% 98%;
+  --secondary: 245 18% 95%;
+  --secondary-foreground: 240 30% 15%;
+  --muted: 240 15% 96%;
+  --muted-foreground: 240 12% 45%;
+  --accent: 280 65% 60%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
-  --input: 220 13% 81%;
-  --ring: 217 91% 60%;
-  --chart-1: 217 91% 60%;
-  --chart-2: 142 76% 36%;
-  --chart-3: 271 91% 65%;
-  --chart-4: 43 96% 56%;
-  --chart-5: 340 82% 52%;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-  --font-serif: Georgia, serif;
+  --input: 240 18% 92%;
+  --ring: 260 70% 55%;
+  --chart-1: 260 70% 55%;
+  --chart-2: 270 65% 58%;
+  --chart-3: 280 60% 60%;
+  --chart-4: 245 68% 52%;
+  --chart-5: 220 75% 58%;
+  --font-sans: 'Source Sans 3', 'Source Sans Pro', system-ui, -apple-system, sans-serif;
+  --font-display: 'Playfair Display', 'Merriweather', Georgia, serif;
+  --font-serif: 'Playfair Display', 'Merriweather', Georgia, serif;
   --font-mono: 'JetBrains Mono', Menlo, monospace;
-  --radius: .5rem;
-  --shadow-2xs: 0px 2px 0px 0px hsl(220 13% 91% / 0.05);
-  --shadow-xs: 0px 1px 2px 0px hsl(220 13% 91% / 0.05);
-  --shadow-sm: 0px 1px 2px 0px hsl(220 13% 91% / 0.06), 0px 1px 3px 0px hsl(220 13% 91% / 0.10);
-  --shadow: 0px 1px 3px 0px hsl(220 13% 91% / 0.10), 0px 1px 2px -1px hsl(220 13% 91% / 0.10);
-  --shadow-md: 0px 4px 6px -1px hsl(220 13% 91% / 0.10), 0px 2px 4px -2px hsl(220 13% 91% / 0.10);
-  --shadow-lg: 0px 10px 15px -3px hsl(220 13% 91% / 0.10), 0px 4px 6px -4px hsl(220 13% 91% / 0.10);
-  --shadow-xl: 0px 20px 25px -5px hsl(220 13% 91% / 0.10), 0px 8px 10px -6px hsl(220 13% 91% / 0.10);
-  --shadow-2xl: 0px 25px 50px -12px hsl(220 13% 91% / 0.25);
+  --radius: .375rem;
+  --shadow-2xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  --shadow-xs: 0px 1px 3px 0px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0px 1px 3px 0px rgba(0, 0, 0, 0.08), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+  --shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10);
+  --shadow-md: 0px 4px 6px -2px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.08), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0px 25px 50px -12px rgba(0, 0, 0, 0.12);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 
@@ -94,48 +178,48 @@
   --opaque-button-border-intensity: 9;
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
-  --background: 280 50% 8%;
-  --foreground: 210 40% 98%;
-  --border: 280 20% 20%;
-  --card: 280 35% 10%;
-  --card-foreground: 210 40% 98%;
-  --card-border: 280 20% 16%;
-  --sidebar: 280 13% 13%;
-  --sidebar-foreground: 210 40% 98%;
-  --sidebar-border: 280 13% 18%;
-  --sidebar-primary: 280 70% 65%;
-  --sidebar-primary-foreground: 210 40% 98%;
-  --sidebar-accent: 280 14% 18%;
-  --sidebar-accent-foreground: 210 40% 98%;
-  --sidebar-ring: 280 70% 65%;
-  --popover: 280 13% 15%;
-  --popover-foreground: 210 40% 98%;
-  --popover-border: 280 13% 20%;
-  --primary: 210 40% 98%;
-  --primary-foreground: 280 40% 7%;
-  --secondary: 280 20% 16%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 280 20% 14%;
-  --muted-foreground: 220 10% 60%;
-  --accent: 280 70% 65%;
-  --accent-foreground: 280 40% 7%;
+  --background: 245 50% 8%;
+  --foreground: 240 20% 98%;
+  --border: 245 30% 18%;
+  --card: 248 45% 10%;
+  --card-foreground: 240 20% 98%;
+  --card-border: 245 35% 15%;
+  --sidebar: 250 40% 12%;
+  --sidebar-foreground: 240 20% 98%;
+  --sidebar-border: 248 35% 17%;
+  --sidebar-primary: 260 75% 62%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 248 38% 16%;
+  --sidebar-accent-foreground: 240 20% 98%;
+  --sidebar-ring: 260 75% 62%;
+  --popover: 248 42% 13%;
+  --popover-foreground: 240 20% 98%;
+  --popover-border: 245 35% 18%;
+  --primary: 260 75% 62%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 245 28% 18%;
+  --secondary-foreground: 240 20% 98%;
+  --muted: 245 30% 16%;
+  --muted-foreground: 240 15% 65%;
+  --accent: 280 68% 65%;
+  --accent-foreground: 0 0% 100%;
   --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
-  --input: 280 13% 30%;
-  --ring: 280 70% 65%;
-  --chart-1: 280 70% 70%;
-  --chart-2: 160 60% 65%;
-  --chart-3: 300 70% 75%;
-  --chart-4: 43 80% 70%;
-  --chart-5: 340 75% 68%;
-  --shadow-2xs: 0px 2px 0px 0px hsl(220 13% 0% / 0.15);
-  --shadow-xs: 0px 1px 2px 0px hsl(220 13% 0% / 0.20);
-  --shadow-sm: 0px 1px 2px 0px hsl(220 13% 0% / 0.25), 0px 1px 3px 0px hsl(220 13% 0% / 0.30);
-  --shadow: 0px 1px 3px 0px hsl(220 13% 0% / 0.30), 0px 1px 2px -1px hsl(220 13% 0% / 0.25);
-  --shadow-md: 0px 4px 6px -1px hsl(220 13% 0% / 0.30), 0px 2px 4px -2px hsl(220 13% 0% / 0.25);
-  --shadow-lg: 0px 10px 15px -3px hsl(220 13% 0% / 0.35), 0px 4px 6px -4px hsl(220 13% 0% / 0.30);
-  --shadow-xl: 0px 20px 25px -5px hsl(220 13% 0% / 0.40), 0px 8px 10px -6px hsl(220 13% 0% / 0.35);
-  --shadow-2xl: 0px 25px 50px -12px hsl(220 13% 0% / 0.50);
+  --destructive-foreground: 240 20% 98%;
+  --input: 245 30% 22%;
+  --ring: 260 75% 62%;
+  --chart-1: 260 75% 62%;
+  --chart-2: 270 70% 65%;
+  --chart-3: 280 65% 68%;
+  --chart-4: 245 72% 60%;
+  --chart-5: 220 78% 65%;
+  --shadow-2xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+  --shadow-xs: 0px 1px 3px 0px rgba(0, 0, 0, 0.20);
+  --shadow-sm: 0px 1px 3px 0px rgba(0, 0, 0, 0.24), 0px 1px 2px 0px rgba(0, 0, 0, 0.20);
+  --shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.20), 0px 4px 6px -1px rgba(0, 0, 0, 0.30);
+  --shadow-md: 0px 4px 6px -2px rgba(0, 0, 0, 0.25), 0px 10px 15px -3px rgba(0, 0, 0, 0.30);
+  --shadow-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.30), 0px 4px 6px -2px rgba(0, 0, 0, 0.20);
+  --shadow-xl: 0px 20px 25px -5px rgba(0, 0, 0, 0.35), 0px 10px 10px -5px rgba(0, 0, 0, 0.20);
+  --shadow-2xl: 0px 25px 50px -12px rgba(0, 0, 0, 0.40);
 
 /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
@@ -177,12 +261,16 @@
   }
 
   html,
-  body,
   * {
     transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Body should transition colors but not background-image */
+  body {
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* Prevent transition on page load */
@@ -193,7 +281,166 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased text-foreground;
+    background-color: hsl(var(--background));
+    min-height: 100vh;
+  }
+
+  /* Light mode: Starry Night light mode background - always present */
+  html:not(.dark),
+  html:not(.dark) body {
+    background-color: hsl(var(--background));
+    background-image: url('/starry-night-light-mode.png') !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  html:not(.dark) body {
+    position: relative;
+  }
+
+  /* Subtle overlay for better readability and blend with the theme */
+  html:not(.dark) body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      hsla(240, 20%, 99%, 0.3) 0%,
+      hsla(240, 20%, 99%, 0.5) 50%,
+      hsla(240, 20%, 99%, 0.7) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Ensure content sits above the overlay */
+  html:not(.dark) body > * {
+    position: relative;
+  }
+
+  /* Enhanced cards in light mode with backdrop blur to show gradient */
+  html:not(.dark) [class*="card"],
+  html:not(.dark) [class*="Card"] {
+    background-color: hsla(240, 25%, 98%, 0.85);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    position: relative;
+    z-index: auto;
+  }
+  
+  /* Ensure interactive elements are clickable */
+  html:not(.dark) button,
+  html:not(.dark) a,
+  html:not(.dark) [role="button"],
+  html:not(.dark) [class*="card"],
+  html:not(.dark) [class*="Card"] {
+    pointer-events: auto;
+  }
+
+  /* Navigation with glass effect */
+  html:not(.dark) nav,
+  html:not(.dark) header {
+    background-color: hsla(240, 20%, 99%, 0.8);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+
+  /* Popovers and modals with enhanced glass effect */
+  html:not(.dark) [role="dialog"],
+  html:not(.dark) [class*="popover"],
+  html:not(.dark) [class*="Popover"] {
+    background-color: hsla(240, 22%, 98%, 0.90);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  /* Dark mode: Starry Night gradient background - always present */
+  html.dark,
+  html.dark body {
+    background-color: hsl(var(--background));
+    background-image: url('/starry-night-gradient.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  html.dark body {
+    position: relative;
+  }
+
+  /* Subtle overlay for better readability and depth */
+  html.dark body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      hsla(245, 50%, 8%, 0.3) 0%,
+      hsla(245, 50%, 8%, 0.5) 50%,
+      hsla(245, 50%, 8%, 0.7) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  @keyframes fadeInBackground {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Ensure content sits above the overlay */
+  html.dark body > * {
+    position: relative;
+  }
+
+  /* Enhanced cards in dark mode with backdrop blur to show gradient */
+  html.dark [class*="card"],
+  html.dark [class*="Card"] {
+    background-color: hsla(248, 45%, 10%, 0.85);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    position: relative;
+    z-index: auto;
+  }
+  
+  /* Ensure interactive elements are clickable */
+  html.dark button,
+  html.dark a,
+  html.dark [role="button"],
+  html.dark [class*="card"],
+  html.dark [class*="Card"] {
+    pointer-events: auto;
+  }
+
+  /* Navigation with glass effect */
+  html.dark nav,
+  html.dark header {
+    background-color: hsla(245, 50%, 8%, 0.8);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+
+  /* Popovers and modals with enhanced glass effect */
+  html.dark [role="dialog"],
+  html.dark [class*="popover"],
+  html.dark [class*="Popover"] {
+    background-color: hsla(248, 42%, 13%, 0.90);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
 
   @keyframes fadeInUp {

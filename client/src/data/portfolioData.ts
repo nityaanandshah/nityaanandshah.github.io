@@ -18,7 +18,7 @@ export const personalInfo = {
   email: "nityashah2801@gmail.com",
   phone: "+91 7621070728",
   location: "Pune, India",
-  tagline: "Crafting scalable systems and turning complex problems into elegant solutions ✨",
+  tagline: "Crafting scalable systems and turning complex problems into elegant solutions",
   resumeUrl: "https://drive.google.com/file/d/1cgbMDfs84YO1EYogG_cvcD37rqoaC6N_/view?usp=sharing",
   web3formsKey: "02981efd-1b2c-4c78-aed9-75c5b4eb114b", // Web3Forms access key
   social: {

@@ -85,11 +85,51 @@
 - NO complex scroll-triggered animations, parallax, or auto-playing elements
 
 ## Visual Treatment
-**Color Philosophy:**
-- Monochromatic base with single accent (avoid in guidelines as per instructions)
+**Color Philosophy: Starry Night Soft Gradient**
+- Cosmic blue, indigo, violet, and purple tones inspired by night skies
+- Primary accent: Rich indigo-purple (hsl 260° 70% 55%) for CTAs and important actions
+- Secondary accent: Vibrant violet (hsl 280° 65% 60%) for special emphasis
+- Backgrounds: 
+  - **Light mode**: Very light blue-white for clean, airy feel
+  - **Dark mode**: Actual Starry Night Soft Gradient image with subtle overlay
 - High contrast text for readability (WCAG AA compliant)
-- Subtle borders and dividers throughout
-- Card backgrounds slightly elevated from page background
+- Subtle blue-gray borders and dividers throughout
+- **Glass morphism effects in dark mode:**
+  - Cards with 85% opacity + 12px backdrop blur
+  - Navigation with 80% opacity + 16px backdrop blur  
+  - Modals with 90% opacity + 20px backdrop blur
+- Card backgrounds slightly elevated from page background with cosmic depth
+- Gradient overlays: Linear gradients from deep blue through indigo to violet
+- Reference: [Starry Night Soft Gradient](https://gradientshub.com/freebies/gradients/46-starry-night-soft-gradient/)
+
+## Color Usage Reference
+
+**Light Mode Palette:**
+- Page Background: `bg-background` (very light blue-white)
+- Text: `text-foreground` (deep navy blue-black)
+- Cards: `bg-card border-card-border` (soft periwinkle white)
+- Primary Buttons: `bg-primary text-primary-foreground` (rich indigo-purple)
+- Secondary Buttons: `bg-secondary text-secondary-foreground` (light blue-gray)
+- Accent Elements: `bg-accent text-accent-foreground` (vibrant violet)
+- Muted Text: `text-muted-foreground` (blue-gray)
+
+**Dark Mode Palette:**
+- Page Background: `bg-background` (deep cosmic blue)
+- Text: `text-foreground` (soft white with blue tint)
+- Cards: `bg-card border-card-border` (rich dark indigo)
+- Primary Buttons: `bg-primary text-primary-foreground` (glowing indigo)
+- Secondary Buttons: `bg-secondary text-secondary-foreground` (dark blue-gray)
+- Accent Elements: `bg-accent text-accent-foreground` (bright violet)
+- Muted Text: `text-muted-foreground` (subtle blue-gray)
+
+**Color Application Examples:**
+- Hover effects: Add `/90` or `/80` opacity modifiers
+- Focus rings: Use `ring-primary` for indigo-purple focus indicators
+- Charts & graphs: Use `bg-chart-1` through `bg-chart-5` for data visualization (indigo → purple → violet → blue)
+- Gradients: Combine deep blue (245°) → indigo (260°) → purple (270°) → violet (280°)
+- Glow effects: Use `shadow-[0_0_20px_rgba(104,55,212,0.3)]` for cosmic glows
+
+**See COLOR_PALETTE.md for comprehensive color variations and hex values**
 
 ## Accessibility
 - Semantic HTML5 elements (nav, main, section, article)
@@ -97,6 +137,7 @@
 - Focus indicators on all focusable elements (ring-2 ring-offset-2)
 - Skip-to-content link for keyboard navigation
 - Sufficient color contrast ratios (minimum 4.5:1)
+- All color combinations meet WCAG AA standards
 
 ## Responsive Behavior
 - Mobile-first approach

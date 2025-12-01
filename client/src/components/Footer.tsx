@@ -15,14 +15,14 @@ export default function Footer({ name, social }: FooterProps) {
 
   return (
     <motion.footer
-      className="py-10 px-6 border-t border-border"
+      className="py-16 px-6 border-t border-border"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-5">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <motion.p
             className="text-sm text-muted-foreground flex items-center gap-1.5"
             initial={{ opacity: 0, y: 20 }}
@@ -61,25 +61,25 @@ export default function Footer({ name, social }: FooterProps) {
               href={social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-lg hover:bg-secondary transition-colors"
+              className="p-3 rounded-full hover:bg-secondary transition-all"
               aria-label="GitHub Profile"
               whileHover={{ scale: 1.15, y: -2 }}
               whileTap={{ scale: 0.95 }}
               data-testid="link-footer-github"
             >
-              <SiGithub className="h-4 w-4 text-muted-foreground" />
+              <SiGithub className="h-5 w-5 text-muted-foreground" />
             </motion.a>
             <motion.a
               href={social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-lg hover:bg-secondary transition-colors"
+              className="p-3 rounded-full hover:bg-secondary transition-all"
               aria-label="LinkedIn Profile"
               whileHover={{ scale: 1.15, y: -2 }}
               whileTap={{ scale: 0.95 }}
               data-testid="link-footer-linkedin"
             >
-              <SiLinkedin className="h-4 w-4 text-muted-foreground" />
+              <SiLinkedin className="h-5 w-5 text-muted-foreground" />
             </motion.a>
           </motion.div>
         </div>
