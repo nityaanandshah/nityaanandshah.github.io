@@ -319,8 +319,8 @@
     z-index: -1;
   }
 
-  /* Ensure content sits above the overlay */
-  html:not(.dark) body > * {
+  /* Ensure content sits above the overlay (exclude dialog portals) */
+  html:not(.dark) body > *:not([data-radix-portal]) {
     position: relative;
   }
 
@@ -343,12 +343,18 @@
     pointer-events: auto;
   }
 
-  /* Navigation with glass effect */
-  html:not(.dark) nav,
+  /* Navigation with glass effect - only apply to header for full-width coverage */
   html:not(.dark) header {
     background-color: hsla(240, 20%, 99%, 0.8);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+
+  /* Keep nav transparent to avoid double-layered backgrounds */
+  html:not(.dark) nav {
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   /* Popovers and modals with enhanced glass effect */
@@ -358,6 +364,18 @@
     background-color: hsla(240, 22%, 98%, 0.90);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
+    pointer-events: auto;
+  }
+
+  /* Ensure dialog content and all children are clickable and scrollable */
+  html:not(.dark) [role="dialog"] *,
+  html:not(.dark) [class*="Dialog"] * {
+    pointer-events: auto;
+  }
+  
+  /* Ensure dialog overlay doesn't block scrolling */
+  html:not(.dark) [data-radix-dialog-overlay] {
+    pointer-events: auto;
   }
 
   /* Dark mode: Starry Night gradient background - always present */
@@ -402,8 +420,8 @@
     }
   }
 
-  /* Ensure content sits above the overlay */
-  html.dark body > * {
+  /* Ensure content sits above the overlay (exclude dialog portals) */
+  html.dark body > *:not([data-radix-portal]) {
     position: relative;
   }
 
@@ -426,12 +444,18 @@
     pointer-events: auto;
   }
 
-  /* Navigation with glass effect */
-  html.dark nav,
+  /* Navigation with glass effect - only apply to header for full-width coverage */
   html.dark header {
     background-color: hsla(245, 50%, 8%, 0.8);
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+
+  /* Keep nav transparent to avoid double-layered backgrounds */
+  html.dark nav {
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   /* Popovers and modals with enhanced glass effect */
@@ -441,6 +465,18 @@
     background-color: hsla(248, 42%, 13%, 0.90);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
+    pointer-events: auto;
+  }
+
+  /* Ensure dialog content and all children are clickable and scrollable */
+  html.dark [role="dialog"] *,
+  html.dark [class*="Dialog"] * {
+    pointer-events: auto;
+  }
+  
+  /* Ensure dialog overlay doesn't block scrolling */
+  html.dark [data-radix-dialog-overlay] {
+    pointer-events: auto;
   }
 
   @keyframes fadeInUp {

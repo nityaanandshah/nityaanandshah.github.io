@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -12,7 +12,6 @@ import { Target, AlertCircle, TrendingUp, Image as ImageIcon } from "lucide-reac
 import { IoFolder, IoLogoGithub, IoOpenOutline, IoBulb } from "react-icons/io5";
 import AnimatedCard from "./AnimatedCard";
 import SectionHeader from "./SectionHeader";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface Project {
   id: string;
@@ -152,213 +151,204 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
       </div>
 
       {/* Project Details Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-            <DialogContent className="max-w-4xl max-h-[90vh]">
+      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
+        <DialogContent className="max-w-4xl max-h-[85vh] flex flex-col overflow-hidden">
+          <DialogHeader className="pb-4 flex-shrink-0">
+            <DialogTitle className="text-3xl font-bold font-display flex items-center gap-4">
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="p-3 rounded-lg bg-secondary shadow-sm"
+                initial={{ rotate: -10 }}
+                animate={{ rotate: 0 }}
+                transition={{ type: "spring", stiffness: 200 }}
               >
-                <DialogHeader className="pb-4">
-                  <DialogTitle className="text-3xl font-bold font-display flex items-center gap-4">
-                    <motion.div
-                      className="p-3 rounded-lg bg-secondary shadow-sm"
-                      initial={{ rotate: -10 }}
-                      animate={{ rotate: 0 }}
-                      transition={{ type: "spring", stiffness: 200 }}
-                    >
-                      <IoFolder className="h-7 w-7" />
-                    </motion.div>
-                    {selectedProject.name}
-                  </DialogTitle>
-                </DialogHeader>
+                <IoFolder className="h-7 w-7" />
+              </motion.div>
+              {selectedProject?.name}
+            </DialogTitle>
+          </DialogHeader>
 
-                <ScrollArea className="max-h-[calc(90vh-120px)] pr-4">
+          {selectedProject && (
+            <div className="flex-1 overflow-y-auto pr-4 min-h-0">
+              <motion.div
+                className="space-y-6"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+              >
+                {/* Full Description */}
+                {selectedProject.fullDescription && (
+                  <div>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {selectedProject.fullDescription}
+                    </p>
+                  </div>
+                )}
+
+                {/* Tech Stack */}
+                <div>
+                  <h4 className="text-sm font-semibold mb-3 uppercase tracking-wide text-muted-foreground">
+                    Tech Stack
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.techStack.map((tech, index) => (
+                      <motion.div
+                        key={tech}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.15 + index * 0.03 }}
+                      >
+                        <Badge variant="secondary" className="font-mono text-xs">
+                          {tech}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Problem Statement */}
+                {selectedProject.problemStatement && (
                   <motion.div
-                    className="space-y-6"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
                   >
-                    {/* Full Description */}
-                    {selectedProject.fullDescription && (
+                    <div className="flex items-start gap-3 p-4 rounded-md bg-secondary/30 border border-border">
+                      <Target className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0" />
                       <div>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {selectedProject.fullDescription}
+                        <h4 className="font-semibold mb-2">Problem Statement</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {selectedProject.problemStatement}
                         </p>
-                      </div>
-                    )}
-
-                    {/* Tech Stack */}
-                    <div>
-                      <h4 className="text-sm font-semibold mb-3 uppercase tracking-wide text-muted-foreground">
-                        Tech Stack
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedProject.techStack.map((tech, index) => (
-                          <motion.div
-                            key={tech}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.15 + index * 0.03 }}
-                          >
-                            <Badge variant="secondary" className="font-mono text-xs">
-                              {tech}
-                            </Badge>
-                          </motion.div>
-                        ))}
                       </div>
                     </div>
+                  </motion.div>
+                )}
 
-                    {/* Problem Statement */}
-                    {selectedProject.problemStatement && (
-                      <motion.div
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        <div className="flex items-start gap-3 p-4 rounded-md bg-secondary/30 border border-border">
-                          <Target className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0" />
-                          <div>
-                            <h4 className="font-semibold mb-2">Problem Statement</h4>
-                            <p className="text-sm text-muted-foreground leading-relaxed">
-                              {selectedProject.problemStatement}
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {/* Approach */}
-                    {selectedProject.approach && (
-                      <motion.div
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.25 }}
-                      >
-                        <div className="flex items-start gap-3 p-5 rounded-lg bg-secondary/30 border border-border shadow-sm">
-                          <IoBulb className="h-6 w-6 text-foreground mt-0.5 flex-shrink-0" />
-                          <div>
-                            <h4 className="font-semibold mb-2">Approach & Implementation</h4>
-                            <p className="text-sm text-muted-foreground leading-relaxed">
-                              {selectedProject.approach}
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {/* Architecture Diagram Placeholder */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      <div className="p-8 rounded-md bg-secondary/20 border border-dashed border-border flex flex-col items-center justify-center text-center">
-                        <ImageIcon className="h-12 w-12 text-muted-foreground/50 mb-3" />
-                        <p className="text-sm text-muted-foreground">
-                          Architecture Diagram
-                        </p>
-                        <p className="text-xs text-muted-foreground/70 mt-1">
-                          Coming soon
+                {/* Approach */}
+                {selectedProject.approach && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.25 }}
+                  >
+                    <div className="flex items-start gap-3 p-5 rounded-lg bg-secondary/30 border border-border shadow-sm">
+                      <IoBulb className="h-6 w-6 text-foreground mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-semibold mb-2">Approach & Implementation</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {selectedProject.approach}
                         </p>
                       </div>
-                    </motion.div>
+                    </div>
+                  </motion.div>
+                )}
 
-                    {/* Challenges */}
-                    {selectedProject.challenges && selectedProject.challenges.length > 0 && (
-                      <motion.div
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.35 }}
+                {/* Architecture Diagram Placeholder */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <div className="p-8 rounded-md bg-secondary/20 border border-dashed border-border flex flex-col items-center justify-center text-center">
+                    <ImageIcon className="h-12 w-12 text-muted-foreground/50 mb-3" />
+                    <p className="text-sm text-muted-foreground">
+                      Architecture Diagram
+                    </p>
+                    <p className="text-xs text-muted-foreground/70 mt-1">
+                      Coming soon
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Challenges */}
+                {selectedProject.challenges && selectedProject.challenges.length > 0 && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.35 }}
+                  >
+                    <div className="flex items-start gap-3 p-4 rounded-md bg-secondary/30 border border-border">
+                      <AlertCircle className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0" />
+                      <div className="flex-1">
+                        <h4 className="font-semibold mb-3">Key Challenges</h4>
+                        <ul className="space-y-2">
+                          {selectedProject.challenges.map((challenge, index) => (
+                            <motion.li
+                              key={index}
+                              className="text-sm text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-foreground/40 before:rounded-full"
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.4 + index * 0.05 }}
+                            >
+                              {challenge}
+                            </motion.li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Impact */}
+                {selectedProject.impact && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.45 }}
+                  >
+                    <div className="flex items-start gap-3 p-4 rounded-md bg-secondary/30 border border-border">
+                      <TrendingUp className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-semibold mb-2">Impact & Results</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {selectedProject.impact}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Links */}
+                {(selectedProject.githubUrl || selectedProject.demoUrl) && (
+                  <motion.div
+                    className="flex gap-3 pt-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    {selectedProject.githubUrl && (
+                      <motion.a
+                        href={selectedProject.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors text-sm font-semibold shadow-sm"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        <div className="flex items-start gap-3 p-4 rounded-md bg-secondary/30 border border-border">
-                          <AlertCircle className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0" />
-                          <div className="flex-1">
-                            <h4 className="font-semibold mb-3">Key Challenges</h4>
-                            <ul className="space-y-2">
-                              {selectedProject.challenges.map((challenge, index) => (
-                                <motion.li
-                                  key={index}
-                                  className="text-sm text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-foreground/40 before:rounded-full"
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: 0.4 + index * 0.05 }}
-                                >
-                                  {challenge}
-                                </motion.li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </motion.div>
+                        <IoLogoGithub className="h-5 w-5" />
+                        View on GitHub
+                      </motion.a>
                     )}
-
-                    {/* Impact */}
-                    {selectedProject.impact && (
-                      <motion.div
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.45 }}
+                    {selectedProject.demoUrl && (
+                      <motion.a
+                        href={selectedProject.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors text-sm font-semibold shadow-sm"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        <div className="flex items-start gap-3 p-4 rounded-md bg-secondary/30 border border-border">
-                          <TrendingUp className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0" />
-                          <div>
-                            <h4 className="font-semibold mb-2">Impact & Results</h4>
-                            <p className="text-sm text-muted-foreground leading-relaxed">
-                              {selectedProject.impact}
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {/* Links */}
-                    {(selectedProject.githubUrl || selectedProject.demoUrl) && (
-                      <motion.div
-                        className="flex gap-3 pt-2"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 }}
-                      >
-                        {selectedProject.githubUrl && (
-                          <motion.a
-                            href={selectedProject.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors text-sm font-semibold shadow-sm"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <IoLogoGithub className="h-5 w-5" />
-                            View on GitHub
-                          </motion.a>
-                        )}
-                        {selectedProject.demoUrl && (
-                          <motion.a
-                            href={selectedProject.demoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors text-sm font-semibold shadow-sm"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <IoOpenOutline className="h-5 w-5" />
-                            View Demo
-                          </motion.a>
-                        )}
-                      </motion.div>
+                        <IoOpenOutline className="h-5 w-5" />
+                        View Demo
+                      </motion.a>
                     )}
                   </motion.div>
-                </ScrollArea>
+                )}
               </motion.div>
-            </DialogContent>
-          </Dialog>
-        )}
-      </AnimatePresence>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
