@@ -40,9 +40,9 @@ function EducationCard({ item, index }: { item: EducationItem; index: number }) 
   return (
     <AnimatedCard index={index}>
                   <Card
-                    className="border-card-border bg-card backdrop-blur-sm transition-all hover:shadow-[0_15px_40px_rgb(236,72,153,0.2)]"
+                    className="border-card-border bg-card backdrop-blur-sm transition-all hover:shadow-[0_15px_40px_rgb(130,90,200,0.15)]"
                     data-testid={`card-education-${item.id}`}
-                    style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.12), 0 0 12px rgba(236, 72, 153, 0.08)" }}
+                    style={{ boxShadow: "0 4px 20px rgba(130, 90, 200, 0.12), 0 0 12px rgba(130, 90, 200, 0.08)" }}
                   >
                     <CardHeader className="pb-4">
                       <h4 className="font-bold text-xl font-display">{item.degree}</h4>
@@ -161,7 +161,7 @@ export default function EducationSection({
                   whileHover={{ rotate: 10, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400 }}
                   className="p-3 rounded-lg bg-secondary"
-                  style={{ boxShadow: "0 2px 16px rgba(236, 72, 153, 0.2), 0 0 16px rgba(236, 72, 153, 0.12)" }}
+                  style={{ boxShadow: "0 2px 16px rgba(130, 90, 200, 0.2), 0 0 16px rgba(130, 90, 200, 0.12)" }}
                 >
                   <IoSchool className="h-7 w-7 text-primary" />
                 </motion.div>
@@ -182,7 +182,7 @@ export default function EducationSection({
                   whileHover={{ rotate: -10, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400 }}
                   className="p-3 rounded-lg bg-secondary"
-                  style={{ boxShadow: "0 2px 16px rgba(236, 72, 153, 0.2), 0 0 16px rgba(236, 72, 153, 0.12)" }}
+                  style={{ boxShadow: "0 2px 16px rgba(130, 90, 200, 0.2), 0 0 16px rgba(130, 90, 200, 0.12)" }}
                 >
                   <IoBook className="h-7 w-7 text-primary" />
                 </motion.div>
@@ -193,9 +193,9 @@ export default function EducationSection({
               {publications.map((pub, index) => (
                 <AnimatedCard key={pub.id} index={index}>
                   <Card
-                    className="border-card-border bg-card backdrop-blur-sm transition-all hover:shadow-[0_15px_40px_rgb(236,72,153,0.2)]"
+                    className="border-card-border bg-card backdrop-blur-sm transition-all hover:shadow-[0_15px_40px_rgb(130,90,200,0.15)]"
                     data-testid={`card-publication-${pub.id}`}
-                    style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.12), 0 0 12px rgba(236, 72, 153, 0.08)" }}
+                    style={{ boxShadow: "0 4px 20px rgba(130, 90, 200, 0.12), 0 0 12px rgba(130, 90, 200, 0.08)" }}
                   >
                     <CardContent className="p-8">
                       <div className="space-y-5">

@@ -80,7 +80,7 @@ export default function HeroSection({
               className="text-sm font-medium tracking-wide bg-card border border-border px-6 py-3 rounded-full shadow-sm"
               whileHover={{ scale: 1.05, y: -2 }}
             >
-              <span className="text-foreground">✨ Available for opportunities</span>
+              <span className="text-foreground">Breaking problems, never production</span>
             </motion.span>
           </motion.div>
 
@@ -111,11 +111,11 @@ export default function HeroSection({
           >
             <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
               <Button
+                variant="outline"
                 size="lg"
                 onClick={scrollToProjects}
-                className="gap-3 h-14 px-8 text-base bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all hover:shadow-[0_8px_30px_rgba(236,72,153,0.25)]"
+                className="gap-3 h-14 px-8 text-base border border-border bg-card/50 hover:bg-secondary font-semibold transition-all"
                 data-testid="button-view-projects"
-                style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.2), 0 0 20px rgba(236, 72, 153, 0.1)" }}
               >
                 View Projects
                 <motion.div
@@ -132,22 +132,22 @@ export default function HeroSection({
                 variant="outline"
                 size="lg"
                 asChild
-                className="gap-3 h-14 px-8 text-base border hover:bg-secondary shadow-sm font-semibold"
+                className="gap-3 h-14 px-8 text-base border border-border bg-card/50 hover:bg-secondary font-semibold transition-all"
                 data-testid="button-view-resume"
               >
                 <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
                   <IoDocument className="h-5 w-5" />
-                  View Resume
+                  Resume
                 </a>
               </Button>
             </motion.div>
 
             <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
               <Button
-                variant="secondary"
+                variant="outline"
                 size="lg"
                 onClick={scrollToContact}
-                className="gap-3 h-14 px-8 text-base shadow-sm font-semibold"
+                className="gap-3 h-14 px-8 text-base border border-border bg-card/50 hover:bg-secondary font-semibold transition-all"
                 data-testid="button-contact-me"
               >
                 <IoMail className="h-5 w-5" />

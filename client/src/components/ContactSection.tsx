@@ -165,18 +165,19 @@ export default function ContactSection({
                 </motion.a>
 
                 <motion.div
-                  className="flex items-center gap-6"
+                  className="flex items-center gap-6 group"
                   whileHover={{ x: 4 }}
                 >
                   <motion.div
-                    className="p-5 rounded-2xl bg-secondary text-foreground shadow-sm"
-                    whileHover={{ scale: 1.1 }}
+                    className="p-5 rounded-2xl bg-secondary text-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    style={{ transition: "all 0.3s ease" }}
                   >
                     <IoLocation className="h-6 w-6" />
                   </motion.div>
                   <div>
                     <p className="text-sm text-muted-foreground font-medium">Location</p>
-                    <p className="font-semibold text-lg mt-1">{location}</p>
+                    <p className="font-semibold text-lg group-hover:text-foreground transition-colors mt-1">{location}</p>
                   </div>
                 </motion.div>
               </div>
@@ -217,7 +218,7 @@ export default function ContactSection({
 
           <AnimatedSection delay={0.2}>
             <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.2 }}>
-              <Card className="border-card-border bg-card backdrop-blur-sm" style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.12), 0 0 12px rgba(236, 72, 153, 0.08)" }}>
+              <Card className="border-card-border bg-card backdrop-blur-sm" style={{ boxShadow: "0 4px 20px rgba(130, 90, 200, 0.12), 0 0 12px rgba(130, 90, 200, 0.08)" }}>
                 <CardContent className="p-10">
                   <AnimatePresence mode="wait">
                     {isSubmitted ? (
@@ -335,10 +336,10 @@ export default function ContactSection({
                         >
                           <Button
                             type="submit"
-                            className="w-full gap-3 h-14 text-base font-semibold transition-all hover:shadow-[0_8px_30px_rgba(236,72,153,0.25)]"
+                            className="w-full gap-3 h-14 text-base font-semibold transition-all hover:shadow-[0_8px_30px_rgba(130,90,200,0.2)]"
                             disabled={isSubmitting}
                             data-testid="button-contact-submit"
-                            style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.2), 0 0 20px rgba(236, 72, 153, 0.1)" }}
+                            style={{ boxShadow: "0 4px 20px rgba(130, 90, 200, 0.2), 0 0 20px rgba(130, 90, 200, 0.1)" }}
                           >
                             {isSubmitting ? (
                               <motion.span

@@ -49,11 +49,11 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.4 + index * 0.1, type: "spring" }}
-                    style={{ boxShadow: "0 0 12px rgba(236, 72, 153, 0.6), 0 0 20px rgba(236, 72, 153, 0.3)" }}
+                    style={{ boxShadow: "0 0 12px rgba(130, 90, 200, 0.6), 0 0 20px rgba(130, 90, 200, 0.3)" }}
                   />
 
                 <AnimatedCard index={index}>
-                  <Card className="border-card-border bg-card backdrop-blur-sm transition-all hover:shadow-[0_15px_40px_rgb(236,72,153,0.2)]" style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.12), 0 0 12px rgba(236, 72, 153, 0.08)" }}>
+                  <Card className="border-card-border bg-card backdrop-blur-sm transition-all hover:shadow-[0_15px_40px_rgb(130,90,200,0.15)]" style={{ boxShadow: "0 4px 20px rgba(130, 90, 200, 0.12), 0 0 12px rgba(130, 90, 200, 0.08)" }}>
                     <CardHeader className="pb-5">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5">
                         <div className="space-y-3">

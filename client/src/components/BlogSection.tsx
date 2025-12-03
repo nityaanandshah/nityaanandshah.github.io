@@ -37,9 +37,9 @@ export default function BlogSection({ posts }: BlogSectionProps) {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 <Card
-                  className="border-card-border bg-card backdrop-blur-sm transition-all group flex flex-col h-full cursor-pointer relative overflow-hidden hover:shadow-[0_15px_40px_rgb(236,72,153,0.2)]"
+                  className="border-card-border bg-card backdrop-blur-sm transition-all group flex flex-col h-full cursor-pointer relative overflow-hidden hover:shadow-[0_15px_40px_rgb(130,90,200,0.15)]"
                   data-testid={`card-blog-${post.id}`}
-                  style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.12), 0 0 12px rgba(236, 72, 153, 0.08)" }}
+                  style={{ boxShadow: "0 4px 20px rgba(130, 90, 200, 0.12), 0 0 12px rgba(130, 90, 200, 0.08)" }}
                 >
                   {/* Animated accent bar */}
                   <motion.div
@@ -48,7 +48,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                    style={{ boxShadow: "0 2px 12px rgba(236, 72, 153, 0.4), 0 0 16px rgba(236, 72, 153, 0.25)" }}
+                    style={{ boxShadow: "0 2px 12px rgba(130, 90, 200, 0.4), 0 0 16px rgba(130, 90, 200, 0.25)" }}
                   />
 
                   <CardHeader className="pb-5 relative z-10 pt-6">
@@ -57,7 +57,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
                         className="p-3 rounded-lg bg-secondary text-foreground"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ type: "spring", stiffness: 400 }}
-                        style={{ boxShadow: "0 2px 12px rgba(236, 72, 153, 0.15), 0 0 12px rgba(236, 72, 153, 0.1)" }}
+                        style={{ boxShadow: "0 2px 12px rgba(130, 90, 200, 0.15), 0 0 12px rgba(130, 90, 200, 0.1)" }}
                       >
                         <IoBook className="h-6 w-6" />
                       </motion.div>
@@ -149,7 +149,7 @@ export default function BlogSection({ posts }: BlogSectionProps) {
             className="inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-card hover:bg-secondary border border-border hover:border-primary text-base font-semibold transition-all group"
             whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            style={{ boxShadow: "0 2px 12px rgba(236, 72, 153, 0.08)" }}
+            style={{ boxShadow: "0 2px 12px rgba(130, 90, 200, 0.08)" }}
           >
             <span>Coming Soon: More Posts</span>
             <motion.div

@@ -26,7 +26,7 @@ export default function AboutSection({ summary, highlights }: AboutSectionProps)
 
           <AnimatedSection delay={0.2}>
             <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.2 }}>
-              <Card className="border-card-border bg-card backdrop-blur-sm" style={{ boxShadow: "0 4px 20px rgba(236, 72, 153, 0.12), 0 0 12px rgba(236, 72, 153, 0.08)" }}>
+              <Card className="border-card-border bg-card backdrop-blur-sm" style={{ boxShadow: "0 4px 20px rgba(130, 90, 200, 0.12), 0 0 12px rgba(130, 90, 200, 0.08)" }}>
                 <CardContent className="p-10">
                   <h3 className="font-bold text-xl mb-8 font-display">What I Bring</h3>
                   <ul className="space-y-5">

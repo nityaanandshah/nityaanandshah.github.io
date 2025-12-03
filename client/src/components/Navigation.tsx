@@ -70,7 +70,7 @@ export default function Navigation({ links, name }: NavigationProps) {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-6 h-18 py-5 flex items-center justify-between">
+      <nav className="w-full px-6 sm:px-10 lg:px-20 xl:px-28 2xl:px-36 h-18 py-5 flex items-center justify-between">
         <motion.button
           onClick={scrollToTop}
           className="font-semibold text-xl tracking-tight font-display hover:opacity-70 transition-opacity"

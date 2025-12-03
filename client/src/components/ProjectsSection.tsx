@@ -49,11 +49,11 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
           {projects.map((project, index) => (
             <AnimatedCard key={project.id} index={index}>
               <Card
-                className="border-card-border bg-card backdrop-blur-sm transition-all group flex flex-col h-full cursor-pointer hover:shadow-[0_15px_40px_rgb(236,72,153,0.2)]"
+                className="border-card-border bg-card backdrop-blur-sm transition-all group flex flex-col h-full cursor-pointer hover:shadow-[0_15px_40px_rgb(130,90,200,0.15)]"
                 data-testid={`card-project-${project.id}`}
                 onClick={() => setSelectedProject(project)}
                 style={{ 
-                  boxShadow: "0 4px 20px rgba(236, 72, 153, 0.12), 0 0 12px rgba(236, 72, 153, 0.08)",
+                  boxShadow: "0 4px 20px rgba(130, 90, 200, 0.12), 0 0 12px rgba(130, 90, 200, 0.08)",
                   pointerEvents: "auto",
                   position: "relative",
                   zIndex: 1
@@ -65,7 +65,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                         className="p-3 rounded-lg bg-secondary text-foreground"
                         whileHover={{ rotate: 10, scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 400 }}
-                        style={{ boxShadow: "0 2px 12px rgba(236, 72, 153, 0.15), 0 0 12px rgba(236, 72, 153, 0.1)" }}
+                        style={{ boxShadow: "0 2px 12px rgba(130, 90, 200, 0.15), 0 0 12px rgba(130, 90, 200, 0.1)" }}
                       >
                         <IoFolder className="h-6 w-6" />
                       </motion.div>
