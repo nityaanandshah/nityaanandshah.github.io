@@ -1,15 +1,9 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Target, AlertCircle, TrendingUp, Image as ImageIcon } from "lucide-react";
-import { IoFolder, IoLogoGithub, IoOpenOutline, IoBulb } from "react-icons/io5";
+import { Target, Lightbulb, X, Code2 } from "lucide-react";
+import { IoFolder, IoLogoGithub, IoOpenOutline } from "react-icons/io5";
 import AnimatedCard from "./AnimatedCard";
 import SectionHeader from "./SectionHeader";
 
@@ -21,13 +15,9 @@ interface Project {
   bullets: string[];
   githubUrl: string | null;
   demoUrl: string | null;
-  // Extended fields for modal
   fullDescription?: string;
   problemStatement?: string;
   approach?: string;
-  challenges?: string[];
-  impact?: string;
-  architectureDiagram?: string | null;
 }
 
 interface ProjectsSectionProps {
@@ -36,6 +26,27 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
+
+  // Close on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedProject(null);
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
 
   return (
     <section id="projects" className="py-32 sm:py-40 px-6 relative overflow-hidden">
@@ -150,205 +161,270 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
         </div>
       </div>
 
-      {/* Project Details Modal */}
-      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-4xl max-h-[85vh] flex flex-col overflow-hidden">
-          <DialogHeader className="pb-4 flex-shrink-0">
-            <DialogTitle className="text-3xl font-bold font-display flex items-center gap-4">
-              <motion.div
-                className="p-3 rounded-lg bg-secondary shadow-sm"
-                initial={{ rotate: -10 }}
-                animate={{ rotate: 0 }}
-                transition={{ type: "spring", stiffness: 200 }}
-              >
-                <IoFolder className="h-7 w-7" />
-              </motion.div>
-              {selectedProject?.name}
-            </DialogTitle>
-          </DialogHeader>
+      {/* Project Details Modal - Custom Implementation */}
+      <AnimatePresence>
+        {selectedProject && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setSelectedProject(null)}
+            />
 
-          {selectedProject && (
-            <div className="flex-1 overflow-y-auto pr-4 min-h-0">
+            {/* Modal Card */}
+            <motion.div
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
               <motion.div
-                className="space-y-6"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
+                className="relative w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-2xl border border-card-border bg-card/95 backdrop-blur-xl"
+                initial={{ scale: 0.9, y: 40, opacity: 0 }}
+                animate={{ scale: 1, y: 0, opacity: 1 }}
+                exit={{ scale: 0.9, y: 40, opacity: 0 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 300, 
+                  damping: 30,
+                  duration: 0.3 
+                }}
+                onClick={(e) => e.stopPropagation()}
+                style={{ 
+                  boxShadow: "0 25px 60px rgba(130, 90, 200, 0.12), 0 0 20px rgba(130, 90, 200, 0.06), inset 0 1px 0 rgba(255,255,255,0.05)"
+                }}
               >
-                {/* Full Description */}
-                {selectedProject.fullDescription && (
-                  <div>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {selectedProject.fullDescription}
-                    </p>
-                  </div>
-                )}
+                {/* Gradient Header Bar */}
+                <div 
+                  className="h-1.5 w-full"
+                  style={{
+                    background: "linear-gradient(90deg, hsl(260, 70%, 55%), hsl(280, 68%, 65%), hsl(245, 72%, 60%))"
+                  }}
+                />
 
-                {/* Tech Stack */}
-                <div>
-                  <h4 className="text-sm font-semibold mb-3 uppercase tracking-wide text-muted-foreground">
-                    Tech Stack
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.techStack.map((tech, index) => (
+                {/* Close Button */}
+                <motion.button
+                  className="absolute top-5 right-5 p-2 rounded-full bg-secondary/80 hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors z-10"
+                  onClick={() => setSelectedProject(null)}
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  style={{ boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }}
+                >
+                  <X className="h-5 w-5" />
+                </motion.button>
+
+                {/* Scrollable Content */}
+                <div className="overflow-y-auto max-h-[calc(85vh-6px)] p-6 sm:p-8 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                  {/* Header */}
+                  <motion.div 
+                    className="flex items-start gap-4 mb-8"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    <motion.div
+                      className="p-4 rounded-xl bg-secondary text-foreground shrink-0"
+                      initial={{ rotate: -15, scale: 0.8 }}
+                      animate={{ rotate: 0, scale: 1 }}
+                      transition={{ type: "spring", stiffness: 300, delay: 0.15 }}
+                      style={{ boxShadow: "0 4px 12px rgba(130, 90, 200, 0.1)" }}
+                    >
+                      <IoFolder className="h-8 w-8" />
+                    </motion.div>
+                    <div className="flex-1 min-w-0">
+                      <h2 className="text-2xl sm:text-3xl font-bold font-display text-foreground leading-tight">
+                        {selectedProject.name}
+                      </h2>
+                      <p className="text-muted-foreground mt-2 leading-relaxed">
+                        {selectedProject.fullDescription || selectedProject.description}
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Content Sections */}
+                  <div className="space-y-6">
+                    {/* Problem Statement */}
+                    {selectedProject.problemStatement && (
                       <motion.div
-                        key={tech}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.15 + index * 0.03 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 }}
                       >
-                        <Badge variant="secondary" className="font-mono text-xs">
-                          {tech}
-                        </Badge>
+                        <div 
+                          className="p-5 rounded-xl border border-border/50 relative overflow-hidden"
+                          style={{ 
+                            background: "linear-gradient(135deg, hsla(260, 70%, 55%, 0.08), hsla(280, 68%, 65%, 0.05))"
+                          }}
+                        >
+                          {/* Decorative accent line */}
+                          <div 
+                            className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl"
+                            style={{ background: "linear-gradient(180deg, hsl(260, 70%, 55%), hsl(280, 68%, 65%))" }}
+                          />
+                          <div className="flex items-start gap-4 pl-3">
+                            <motion.div 
+                              className="p-2.5 rounded-lg bg-secondary/80 text-foreground shrink-0"
+                              whileHover={{ scale: 1.05 }}
+                              style={{ boxShadow: "0 2px 8px rgba(130, 90, 200, 0.08)" }}
+                            >
+                              <Target className="h-5 w-5" />
+                            </motion.div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-semibold text-foreground mb-2 font-display">
+                                Problem Statement
+                              </h3>
+                              <p className="text-sm text-muted-foreground leading-relaxed">
+                                {selectedProject.problemStatement}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
                       </motion.div>
-                    ))}
+                    )}
+
+                    {/* Approach */}
+                    {selectedProject.approach && (
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        <div 
+                          className="p-5 rounded-xl border border-border/50 relative overflow-hidden"
+                          style={{ 
+                            background: "linear-gradient(135deg, hsla(245, 72%, 60%, 0.08), hsla(260, 70%, 55%, 0.05))"
+                          }}
+                        >
+                          {/* Decorative accent line */}
+                          <div 
+                            className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl"
+                            style={{ background: "linear-gradient(180deg, hsl(245, 72%, 60%), hsl(260, 70%, 55%))" }}
+                          />
+                          <div className="flex items-start gap-4 pl-3">
+                            <motion.div 
+                              className="p-2.5 rounded-lg bg-secondary/80 text-foreground shrink-0"
+                              whileHover={{ scale: 1.05 }}
+                              style={{ boxShadow: "0 2px 8px rgba(130, 90, 200, 0.08)" }}
+                            >
+                              <Lightbulb className="h-5 w-5" />
+                            </motion.div>
+                            <div className="flex-1 min-w-0">
+                              <h3 className="font-semibold text-foreground mb-2 font-display">
+                                Approach & Implementation
+                              </h3>
+                              <p className="text-sm text-muted-foreground leading-relaxed">
+                                {selectedProject.approach}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {/* Tech Stack */}
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      <div 
+                        className="p-5 rounded-xl border border-border/50 relative overflow-hidden"
+                        style={{ 
+                          background: "linear-gradient(135deg, hsla(270, 65%, 58%, 0.08), hsla(245, 72%, 60%, 0.05))"
+                        }}
+                      >
+                        {/* Decorative accent line */}
+                        <div 
+                          className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl"
+                          style={{ background: "linear-gradient(180deg, hsl(270, 65%, 58%), hsl(245, 72%, 60%))" }}
+                        />
+                        <div className="flex items-start gap-4 pl-3">
+                          <motion.div 
+                            className="p-2.5 rounded-lg bg-secondary/80 text-foreground shrink-0"
+                            whileHover={{ scale: 1.05 }}
+                            style={{ boxShadow: "0 2px 8px rgba(130, 90, 200, 0.08)" }}
+                          >
+                            <Code2 className="h-5 w-5" />
+                          </motion.div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-semibold text-foreground mb-3 font-display">
+                              Tech Stack
+                            </h3>
+                            <div className="flex flex-wrap gap-2">
+                              {selectedProject.techStack.map((tech, index) => (
+                                <motion.div
+                                  key={tech}
+                                  initial={{ opacity: 0, scale: 0.8 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  transition={{ delay: 0.45 + index * 0.05 }}
+                                  whileHover={{ scale: 1.08, y: -2 }}
+                                >
+                                  <Badge
+                                    className="font-mono text-xs px-3 py-1.5 bg-secondary/80 text-foreground border border-border/50 hover:bg-secondary transition-colors"
+                                    style={{ boxShadow: "0 1px 4px rgba(130, 90, 200, 0.05)" }}
+                                  >
+                                    {tech}
+                                  </Badge>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Action Links */}
+                    {(selectedProject.githubUrl || selectedProject.demoUrl) && (
+                      <motion.div
+                        className="flex flex-wrap gap-3 pt-4"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 }}
+                      >
+                        {selectedProject.githubUrl && (
+                          <motion.a
+                            href={selectedProject.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-secondary hover:bg-secondary/80 text-foreground text-sm font-semibold transition-all"
+                            whileHover={{ scale: 1.03, y: -2 }}
+                            whileTap={{ scale: 0.98 }}
+                            style={{ boxShadow: "0 2px 10px rgba(130, 90, 200, 0.08)" }}
+                          >
+                            <IoLogoGithub className="h-5 w-5" />
+                            View on GitHub
+                          </motion.a>
+                        )}
+                        {selectedProject.demoUrl && (
+                          <motion.a
+                            href={selectedProject.demoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all text-primary-foreground"
+                            whileHover={{ scale: 1.03, y: -2 }}
+                            whileTap={{ scale: 0.98 }}
+                            style={{ 
+                              background: "linear-gradient(135deg, hsl(260, 70%, 55%), hsl(280, 68%, 65%))",
+                              boxShadow: "0 2px 10px rgba(130, 90, 200, 0.15)" 
+                            }}
+                          >
+                            <IoOpenOutline className="h-5 w-5" />
+                            View Live Demo
+                          </motion.a>
+                        )}
+                      </motion.div>
+                    )}
                   </div>
                 </div>
-
-                {/* Problem Statement */}
-                {selectedProject.problemStatement && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <div className="flex items-start gap-3 p-4 rounded-md bg-secondary/30 border border-border">
-                      <Target className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold mb-2">Problem Statement</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {selectedProject.problemStatement}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Approach */}
-                {selectedProject.approach && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.25 }}
-                  >
-                    <div className="flex items-start gap-3 p-5 rounded-lg bg-secondary/30 border border-border shadow-sm">
-                      <IoBulb className="h-6 w-6 text-foreground mt-0.5 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold mb-2">Approach & Implementation</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {selectedProject.approach}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Architecture Diagram Placeholder */}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <div className="p-8 rounded-md bg-secondary/20 border border-dashed border-border flex flex-col items-center justify-center text-center">
-                    <ImageIcon className="h-12 w-12 text-muted-foreground/50 mb-3" />
-                    <p className="text-sm text-muted-foreground">
-                      Architecture Diagram
-                    </p>
-                    <p className="text-xs text-muted-foreground/70 mt-1">
-                      Coming soon
-                    </p>
-                  </div>
-                </motion.div>
-
-                {/* Challenges */}
-                {selectedProject.challenges && selectedProject.challenges.length > 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.35 }}
-                  >
-                    <div className="flex items-start gap-3 p-4 rounded-md bg-secondary/30 border border-border">
-                      <AlertCircle className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0" />
-                      <div className="flex-1">
-                        <h4 className="font-semibold mb-3">Key Challenges</h4>
-                        <ul className="space-y-2">
-                          {selectedProject.challenges.map((challenge, index) => (
-                            <motion.li
-                              key={index}
-                              className="text-sm text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-foreground/40 before:rounded-full"
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.4 + index * 0.05 }}
-                            >
-                              {challenge}
-                            </motion.li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Impact */}
-                {selectedProject.impact && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.45 }}
-                  >
-                    <div className="flex items-start gap-3 p-4 rounded-md bg-secondary/30 border border-border">
-                      <TrendingUp className="h-5 w-5 text-foreground mt-0.5 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-semibold mb-2">Impact & Results</h4>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {selectedProject.impact}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Links */}
-                {(selectedProject.githubUrl || selectedProject.demoUrl) && (
-                  <motion.div
-                    className="flex gap-3 pt-2"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    {selectedProject.githubUrl && (
-                      <motion.a
-                        href={selectedProject.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors text-sm font-semibold shadow-sm"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <IoLogoGithub className="h-5 w-5" />
-                        View on GitHub
-                      </motion.a>
-                    )}
-                    {selectedProject.demoUrl && (
-                      <motion.a
-                        href={selectedProject.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors text-sm font-semibold shadow-sm"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <IoOpenOutline className="h-5 w-5" />
-                        View Demo
-                      </motion.a>
-                    )}
-                  </motion.div>
-                )}
               </motion.div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

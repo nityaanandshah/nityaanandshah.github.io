@@ -140,18 +140,9 @@ export const projects = [
     ],
     githubUrl: null,
     demoUrl: null,
-    // Detailed information for modal
     fullDescription: "An enterprise AI-powered platform designed to help employees improve their prompt engineering skills through gamified learning and real-time AI feedback.",
     problemStatement: "As AI tools become ubiquitous in enterprise workflows, employees struggle with writing effective prompts that yield high-quality results. Traditional training methods are time-consuming and lack engagement, leading to underutilization of AI capabilities.",
     approach: "Developed a full-stack application with Angular frontend and Spring Boot microservices backend. Implemented contest-style challenges with multiple difficulty levels, real-time AI-powered feedback using GPT models, and a scoring system to track improvement. Integrated Oracle SQL for persistent data storage and user progress tracking.",
-    challenges: [
-      "Handling concurrent users during contests while maintaining sub-200ms response times",
-      "Integrating multiple AI models for prompt evaluation without exceeding API rate limits",
-      "Designing an intuitive UX that makes prompt engineering fun and accessible",
-      "Ensuring data security and compliance with enterprise standards",
-    ],
-    impact: "Enabled more than 120+ participants to engage in real-time AI-assisted competitions with 85% engagement rate. Improved response latency by 40% through performance optimizations in Angular + Spring Boot. Adopted internally across multiple teams at BNY. Users reported 40% improvement in AI tool effectiveness, reducing average prompt refinement time by 60% and saving approximately 5 hours per employee per month.",
-    architectureDiagram: null, // Placeholder for future diagram
   },
   {
     id: "teaching-copilot",
@@ -165,18 +156,9 @@ export const projects = [
     ],
     githubUrl: "https://github.com/nityaanandshah",
     demoUrl: null,
-    // Detailed information for modal
     fullDescription: "An intelligent educational assistant that helps students learn more effectively by summarizing complex materials, answering questions in real-time, and generating personalized quizzes.",
     problemStatement: "Students often struggle with information overload when studying complex topics. They need quick summaries, instant clarification on doubts, and effective revision tools. Traditional study methods are passive and don't provide immediate feedback.",
     approach: "Built a React-based frontend with real-time WebSocket communication using Socket.io. Integrated Meta's Llama 2 LLM for natural language understanding and generation. Implemented a Node.js backend to handle model inference, prompt engineering, and session management. Created an adaptive quiz engine that generates questions based on study materials.",
-    challenges: [
-      "Optimizing Llama 2 inference time to provide responses within 3-5 seconds",
-      "Designing effective prompts that generate accurate summaries and relevant questions",
-      "Managing WebSocket connections for real-time interaction without memory leaks",
-      "Ensuring quiz quality and relevance to the source material",
-    ],
-    impact: "Used by 150+ students during beta testing. Reduced study time by 30% while improving test scores by 25%. Generated over 5,000 AI-powered summaries and 2,000+ practice questions. Students rated the tool 4.7/5 for effectiveness.",
-    architectureDiagram: null, // Placeholder for future diagram
   },
   {
     id: "iot-biomarkers",
@@ -190,18 +172,9 @@ export const projects = [
     ],
     githubUrl: null,
     demoUrl: null,
-    // Detailed information for modal
     fullDescription: "A machine learning system that analyzes IoT sensor data from wearable devices to detect early signs of Mild Cognitive Impairment (MCI) in elderly individuals, enabling proactive healthcare interventions.",
     problemStatement: "Mild Cognitive Impairment (MCI) often goes undetected until symptoms become severe. Traditional clinical assessments are infrequent and subjective. There's a need for continuous, objective monitoring that can detect subtle behavioral changes indicative of cognitive decline.",
     approach: "Collected sensor data from IoT devices tracking daily activities, sleep patterns, and movement behaviors. Performed comprehensive exploratory data analysis to identify digital biomarkers correlated with MCI symptoms. Developed ensemble ML models (Random Forest, XGBoost, SVM) for anomaly detection. Implemented feature engineering to extract meaningful patterns from time-series sensor data.",
-    challenges: [
-      "Handling noisy and incomplete sensor data from real-world IoT devices",
-      "Identifying subtle patterns that distinguish normal aging from MCI symptoms",
-      "Balancing model sensitivity and specificity to minimize false positives/negatives",
-      "Ensuring model interpretability for clinical validation and trust",
-    ],
-    impact: "Achieved 87% accuracy in early MCI detection, 6 months earlier than traditional methods. Analyzed data from 200+ elderly participants across 15 months. The model identified 3 novel digital biomarkers that improved detection accuracy by 15%. Research contributed to a healthcare study on proactive elderly care.",
-    architectureDiagram: null, // Placeholder for future diagram
   },
 ];
 
