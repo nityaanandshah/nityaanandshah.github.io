@@ -404,13 +404,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                             href={selectedProject.demoUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-semibold transition-all text-primary-foreground"
+                            className="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-secondary hover:bg-secondary/80 text-foreground text-sm font-semibold transition-all"
                             whileHover={{ scale: 1.03, y: -2 }}
                             whileTap={{ scale: 0.98 }}
-                            style={{ 
-                              background: "linear-gradient(135deg, hsl(260, 70%, 55%), hsl(280, 68%, 65%))",
-                              boxShadow: "0 2px 10px rgba(130, 90, 200, 0.15)" 
-                            }}
+                            style={{ boxShadow: "0 2px 10px rgba(130, 90, 200, 0.08)" }}
                           >
                             <IoOpenOutline className="h-5 w-5" />
                             View Live Demo
