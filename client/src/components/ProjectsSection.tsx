@@ -316,9 +316,15 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                               <h3 className="font-semibold text-foreground mb-2 font-display">
                                 Approach & Implementation
                               </h3>
-                              <p className="text-sm text-muted-foreground leading-relaxed">
-                                {selectedProject.approach}
-                              </p>
+                              <div className="text-sm text-muted-foreground leading-relaxed space-y-2">
+                                {selectedProject.approach.split('\n').map((line, index) => (
+                                  line.trim() && (
+                                    <p key={index} className="leading-relaxed">
+                                      {line}
+                                    </p>
+                                  )
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>

@@ -46,13 +46,29 @@ export const aboutContent = {
 /**
  * SKILLS
  * Grouped by category. Add or remove skills as needed.
+ * Top skills in each category are most relevant to FAANG companies.
  */
 export const skills = {
-  programming: ["Java", "Python", "JavaScript", "TypeScript", "C++", "C"],
-  web: ["React", "Angular", "Node.js", "Express.js", "Spring Boot", "HTML", "CSS", "Tailwind CSS", "RESTful APIs"],
-  databases: ["Oracle SQL", "MySQL", "MongoDB"],
-  ml: ["NumPy", "Pandas", "scikit-learn", "PyTorch", "Keras", "TensorFlow", "Matplotlib"],
-  tools: ["Docker", "Kubernetes", "Git", "GitHub Actions", "Vite", "RabbitMQ", "JWT", "SonarQube", "Swagger UI", "MATLAB"],
+  programming: {
+    highlights: ["Java", "Python", "TypeScript", "Go", "C++", "JavaScript"],
+    additional: ["C", "SQL"],
+  },
+  web: {
+    highlights: ["React", "Node.js", "WebSocket", "Spring Boot", "Angular"],
+    additional: ["Express.js", "RESTful APIs", "HTML", "CSS", "Tailwind CSS"],
+  },
+  databases: {
+    highlights: ["PostgreSQL", "Redis", "MySQL", "MongoDB"],
+    additional: ["Oracle SQL"],
+  },
+  ml: {
+    highlights: ["PyTorch", "TensorFlow", "scikit-learn", "NumPy", "Pandas"],
+    additional: ["Keras", "Matplotlib", "Graph Algorithms"],
+  },
+  tools: {
+    highlights: ["Distributed Systems", "Microservices", "CI/CD", "Kubernetes", "Docker", "Git"],
+    additional: ["GitHub Actions", "RabbitMQ", "JWT", "SonarQube", "Swagger UI", "Vite", "MATLAB"],
+  },
 };
 
 /**
@@ -145,20 +161,21 @@ export const projects = [
     approach: "Developed a full-stack application with Angular frontend and Spring Boot microservices backend. Implemented contest-style challenges with multiple difficulty levels, real-time AI-powered feedback using GPT models, and a scoring system to track improvement. Integrated Oracle SQL for persistent data storage and user progress tracking.",
   },
   {
-    id: "teaching-copilot",
-    name: "Teaching Copilot",
-    description: "Educational tool using Meta's Llama 2 for text summarization, Q&A assistance, and revision support with quizzes.",
-    techStack: ["React", "Node.js", "Socket.io", "Llama 2"],
+    id: "playforge",
+    name: "PlayForge",
+    description: "Multiplayer gaming platform with real-time WebSocket gameplay, ELO matchmaking, and tournament systems.",
+    techStack: ["Go", "React", "TypeScript", "PostgreSQL", "Redis", "WebSocket", "Docker"],
     bullets: [
-      "Leveraged Llama 2 for intelligent text summarization",
-      "Built real-time Q&A assistance with prompt engineering",
-      "Implemented quiz-based revision for enhanced learning",
+      "Built Go backend handling 100+ concurrent WebSocket connections with goroutines for real-time gameplay across 4 multiplayer games",
+      "Implemented ELO matchmaking algorithm with Redis achieving O(log n) lookups and sub-100ms pairing times",
+      "Designed Redis pub/sub architecture for horizontal scaling and distributed state synchronization",
+      "Created tournament bracket system with spectator mode supporting 50+ concurrent viewers per match",
     ],
-    githubUrl: "https://github.com/nityaanandshah",
+    githubUrl: "https://github.com/nityaanandshah/PlayForge",
     demoUrl: null,
-    fullDescription: "An intelligent educational assistant that helps students learn more effectively by summarizing complex materials, answering questions in real-time, and generating personalized quizzes.",
-    problemStatement: "Students often struggle with information overload when studying complex topics. They need quick summaries, instant clarification on doubts, and effective revision tools. Traditional study methods are passive and don't provide immediate feedback.",
-    approach: "Built a React-based frontend with real-time WebSocket communication using Socket.io. Integrated Meta's Llama 2 LLM for natural language understanding and generation. Implemented a Node.js backend to handle model inference, prompt engineering, and session management. Created an adaptive quiz engine that generates questions based on study materials.",
+    fullDescription: "A high-performance multiplayer gaming platform built with Go, featuring real-time WebSocket gameplay, intelligent ELO-based matchmaking, tournament brackets, and spectator mode.",
+    problemStatement: "You join an online game and immediately hit lag. As a beginner, you're matched against a pro (terrible matchmaking). During peak hours when thousands connect, the system crashes. Connections drop, games freeze, you're kicked out. Try to spectate a tournament? That slows down everyone's game. The problem? Traditional platforms can't handle concurrent connections or scale under load. Their monolithic architecture buckles, matchmaking fails, and the whole experience breaks.",
+    approach: "My solution to these problems:\n\n• Lag and connection drops: Built WebSocket infrastructure with Go's goroutines and channels for lock-free game state updates. Added connection pooling and automatic reconnection.\n\n• Unfair matchmaking: Designed ELO-based matchmaking using Redis sorted sets. Pairs players in O(log n) time with skill-based matching in under 100ms.\n\n• System crashes at scale: Architected Redis pub/sub for horizontal scaling. Multiple backend servers sync game state in real-time behind a load balancer.\n\n• Spectators slow down games: Built fan-out messaging with separate Redis channels per game room. 50+ spectators can watch without impacting player performance.\n\n• Slow tournament brackets: Implemented single-elimination tree algorithms with automatic bye-round handling.\n\n• Database queries slow under load: Optimized PostgreSQL with connection pooling, composite indexes, and write-through caching (Redis first, async persistence). Reduced query latency by 60%.\n\n• Frontend: React TypeScript with WebSocket reconnection and optimistic UI updates for instant feel. Dockerized entire stack—45MB Go binary, 12MB frontend.",
   },
   {
     id: "terramtes",
@@ -175,8 +192,8 @@ export const projects = [
     githubUrl: "https://github.com/nityaanandshah/Trip-Companion",
     demoUrl: "https://trip-companion.onrender.com/",
     fullDescription: "A dynamic full-stack social platform that brings solo travelers together by helping them find compatible travel companions who match their vibe, budget, and adventure style.",
-    problemStatement: "Ever wanted to explore the world but couldn't find the right travel buddy? Solo travelers face the challenge of finding companions who match their vibe, budget, and adventure style. Traditional social platforms weren't built for travelers—they lack the tools to discover compatible travel mates, coordinate plans, and stay connected in real-time while planning epic adventures together.",
-    approach: "Built a dynamic full-stack platform that brings travelers together instantly. Leveraged Next.js 16 and React 19 for a lightning-fast, server-rendered experience that feels native on any device. Integrated Socket.io for real-time group chats where travelers can coordinate plans, see who's online, and get instant responses. Created an intelligent matching system with advanced filtering to help users discover perfect travel companions based on destination, dates, budget, and travel style. Implemented secure authentication with NextAuth.js and a robust PostgreSQL database via Prisma for managing complex relationships between users, trips, and conversations. Added Cloudinary for seamless image uploads so travelers can share inspiring destination photos. Designed a sleek, mobile-first UI with Tailwind CSS that makes trip planning feel effortless and fun.",
+    problemStatement: "Ever wanted to explore the world but couldn't find the right travel buddy? Solo travelers struggle to find companions who match their vibe, budget, and adventure style. Traditional social platforms weren't built for travelers—they lack tools to discover compatible travel mates, coordinate trip plans in real-time, and stay connected while organizing adventures. You need a platform that understands travel-specific needs, not just generic social networking.",
+    approach: "My solution to these problems:\n\n• Finding compatible travel companions: Created an intelligent matching system with multi-parameter filtering (destination, dates, budget range, duration with ±2 day tolerance, and travel style). Algorithm matches travelers based on compatibility scores.\n\n• Real-time coordination: Built Socket.io infrastructure with room-based architecture for instant group chats. Added typing indicators, read tracking, and online presence via Map data structures.\n\n• Planning trips together: Developed request/approval workflow with state machine (pending → approved/rejected) and atomic operations. Prevents duplicate requests and handles edge cases.\n\n• Staying connected seamlessly: Implemented authentication middleware for WebSocket connections with automatic reconnection handling. Smart offline notification system that aggregates alerts.\n\n• Managing trip data: PostgreSQL with Prisma ORM for complex relational schema (7 models with cascading deletes and composite indexes). NextAuth.js v5 for session management with protected API routes.\n\n• Sharing destinations: Integrated Cloudinary for optimized image delivery. Mobile-first responsive UI with Tailwind CSS for effortless planning on any device.\n\n• Robust backend: RESTful API design with 25+ endpoints, Zod schema validation, and comprehensive error handling. Built with Next.js 16 App Router and React 19 Server Components.",
   },
 ];
 
