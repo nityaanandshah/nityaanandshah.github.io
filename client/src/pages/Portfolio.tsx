@@ -49,7 +49,7 @@ export default function Portfolio() {
 
         <EducationSection education={education} publications={publications} />
 
-        <BlogSection posts={blogPosts} />
+        {/* <BlogSection posts={blogPosts} /> */}
 
         <ContactSection
           email={personalInfo.email}

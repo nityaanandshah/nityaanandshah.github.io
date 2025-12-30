@@ -31,7 +31,8 @@ export const aboutContent = {
   summary: `Hey! I'm a Software Engineer at BNY with a strong foundation in computer science from IIT Jodhpur. 
   I specialize in building scalable full-stack applications—from Spring Boot microservices that streamline enterprise workflows to intuitive Angular frontends that improve user productivity by 30%. 
   
-  At BNY, I've designed systems that slash manual processing time by 40% and built Prompt'athon, an AI-powered platform supporting 1,000+ concurrent users with real-time LLM feedback. 
+  At BNY, I've designed systems that slash manual processing time by 40% and built enterprise-scale platforms supporting 1,000+ concurrent users with real-time feedback systems. 
+  I've also created AeroVista, a 3D flight visualization tool using WebGL and astronomical algorithms to predict sun exposure and optimal viewing windows for 60+ airports.
   Previously, I architected a microservices-based Healthcare Management System with Docker/Kubernetes deployment, and contributed to rural COVID-19 contact tracing through data analysis. 
   
   I'm passionate about transforming ideas into impactful solutions through clean code, thoughtful architecture, and data-driven insights.`,
@@ -55,19 +56,19 @@ export const skills = {
   },
   web: {
     highlights: ["React", "Node.js", "WebSocket", "Spring Boot", "Angular"],
-    additional: ["Express.js", "RESTful APIs", "HTML", "CSS", "Tailwind CSS"],
+    additional: ["Express.js", "RESTful APIs", "HTML", "CSS", "Tailwind CSS", "WebGL", "Three.js"],
   },
   databases: {
-    highlights: ["PostgreSQL", "Redis", "MySQL", "MongoDB"],
-    additional: ["Oracle SQL"],
+    highlights: ["PostgreSQL", "Redis", "MySQL", "MongoDB", "Oracle SQL"],
+    additional: [],
   },
   ml: {
-    highlights: ["PyTorch", "TensorFlow", "scikit-learn", "NumPy", "Pandas"],
-    additional: ["Keras", "Matplotlib", "Graph Algorithms"],
+    highlights: ["PyTorch", "TensorFlow", "scikit-learn", "NumPy", "Pandas", "Keras"],
+    additional: ["Matplotlib", "Graph Algorithms"],
   },
   tools: {
     highlights: ["Distributed Systems", "Microservices", "CI/CD", "Kubernetes", "Docker", "Git"],
-    additional: ["GitHub Actions", "RabbitMQ", "JWT", "SonarQube", "Swagger UI", "Vite", "MATLAB"],
+    additional: ["GitHub Actions", "RabbitMQ", "JWT", "SonarQube", "Swagger UI", "Vite", "ESLint", "MATLAB"],
   },
 };
 
@@ -145,22 +146,6 @@ export const experience = [
  */
 export const projects = [
   {
-    id: "promptathon",
-    name: "Prompt'athon",
-    description: "AI-powered platform to enhance prompt writing skills with contest-style participation and multiple engagement modes.",
-    techStack: ["Angular", "Spring Boot", "Oracle SQL"],
-    bullets: [
-      "Built contest-style flows with multiple engagement modes",
-      "Integrated AI-generated suggestions for real-time feedback",
-      "Ensured scalability and responsiveness for enterprise use",
-    ],
-    githubUrl: null,
-    demoUrl: null,
-    fullDescription: "An enterprise AI-powered platform designed to help employees improve their prompt engineering skills through gamified learning and real-time AI feedback.",
-    problemStatement: "As AI tools become ubiquitous in enterprise workflows, employees struggle with writing effective prompts that yield high-quality results. Traditional training methods are time-consuming and lack engagement, leading to underutilization of AI capabilities.",
-    approach: "Developed a full-stack application with Angular frontend and Spring Boot microservices backend. Implemented contest-style challenges with multiple difficulty levels, real-time AI-powered feedback using GPT models, and a scoring system to track improvement. Integrated Oracle SQL for persistent data storage and user progress tracking.",
-  },
-  {
     id: "playforge",
     name: "PlayForge",
     description: "Multiplayer gaming platform with real-time WebSocket gameplay, ELO matchmaking, and tournament systems.",
@@ -194,6 +179,23 @@ export const projects = [
     fullDescription: "A dynamic full-stack social platform that brings solo travelers together by helping them find compatible travel companions who match their vibe, budget, and adventure style.",
     problemStatement: "Ever wanted to explore the world but couldn't find the right travel buddy? Solo travelers struggle to find companions who match their vibe, budget, and adventure style. Traditional social platforms weren't built for travelers—they lack tools to discover compatible travel mates, coordinate trip plans in real-time, and stay connected while organizing adventures. You need a platform that understands travel-specific needs, not just generic social networking.",
     approach: "My solution to these problems:\n\n• Finding compatible travel companions: Created an intelligent matching system with multi-parameter filtering (destination, dates, budget range, duration with ±2 day tolerance, and travel style). Algorithm matches travelers based on compatibility scores.\n\n• Real-time coordination: Built Socket.io infrastructure with room-based architecture for instant group chats. Added typing indicators, read tracking, and online presence via Map data structures.\n\n• Planning trips together: Developed request/approval workflow with state machine (pending → approved/rejected) and atomic operations. Prevents duplicate requests and handles edge cases.\n\n• Staying connected seamlessly: Implemented authentication middleware for WebSocket connections with automatic reconnection handling. Smart offline notification system that aggregates alerts.\n\n• Managing trip data: PostgreSQL with Prisma ORM for complex relational schema (7 models with cascading deletes and composite indexes). NextAuth.js v5 for session management with protected API routes.\n\n• Sharing destinations: Integrated Cloudinary for optimized image delivery. Mobile-first responsive UI with Tailwind CSS for effortless planning on any device.\n\n• Robust backend: RESTful API design with 25+ endpoints, Zod schema validation, and comprehensive error handling. Built with Next.js 16 App Router and React 19 Server Components.",
+  },
+  {
+    id: "aerovista",
+    name: "AeroVista",
+    description: "Interactive 3D flight path visualizer that predicts sun exposure, optimal viewing sides, and comfort zones throughout your journey.",
+    techStack: ["React", "TypeScript", "WebGL", "globe.gl", "shadcn/ui", "Tailwind CSS", "Vite"],
+    bullets: [
+      "Built 3D globe with Three.js rendering flight paths and dynamic day/night atmospheric effects",
+      "Integrated Jean Meeus solar algorithms and Haversine calculations for precise sun exposure predictions",
+      "Developed aircraft analysis with custom bearing logic showing which side receives direct sunlight",
+      "Built recommendations engine analyzing sun data across 100+ airports for optimal viewing opportunities",
+    ],
+    githubUrl: "https://github.com/nityaanandshah/aerovista.github.io",
+    demoUrl: "https://nityaanandshah.github.io/aerovista.github.io/",
+    fullDescription: "A sophisticated 3D flight visualization platform that uses astronomical calculations to predict sun exposure, helping travelers choose the perfect seat for views, comfort, and photography.",
+    problemStatement: "You're excited for your window seat, but hours into the flight, the sun is relentlessly burning through your window, forcing you to shut the shade. Or even more frustrating—you're staring at an empty sky while passengers on the opposite side witness an incredible sunset you'll never see. No airline or travel site warns you about sun exposure, tells you which side offers the best views, or helps you avoid hours of uncomfortable glare. Every flight is a coin flip, and when you lose, your journey is ruined.",
+    approach: "My solution to these problems:\n\n• 3D flight visualization: Leveraged Three.js and globe.gl to create an interactive Earth model that renders your complete flight path with dynamic day/night atmospheric effects.\n\n• Astronomical precision: Integrated Jean Meeus solar position algorithms and Haversine geodesic calculations to predict exact sun angles, altitude, and exposure patterns throughout the entire journey.\n\n• Real-time aircraft analysis: Custom bearing logic determines which side (left/right) receives direct sunlight at every moment, displayed through an intuitive visual aircraft diagram with accurate directional indicators.\n\n• Interactive timeline interface: Users can scrub through the flight duration with playback controls and color-coded markers highlighting sunrise, sunset, and peak glare moments for complete journey preview.\n\n• Intelligent recommendations engine: Analytics dashboard processes sun exposure data across 60+ airports, delivering actionable insights for photography opportunities, optimal viewing windows, and maximum comfort during the flight.",
   },
 ];
 
@@ -273,13 +275,13 @@ export const blogPosts = [
     // Future: contentMarkdown: "path/to/markdown/file.md"
   },
   {
-    id: "llm-integration-production",
-    title: "Integrating LLMs in Production: Real-time Feedback at Scale",
-    excerpt: "Building Prompt'athon taught me the challenges of integrating LLMs in enterprise applications. From managing API costs to achieving sub-second response times, here's what worked.",
+    id: "webgl-flight-visualization",
+    title: "Building 3D Flight Visualizations with WebGL and Astronomical Calculations",
+    excerpt: "Creating AeroVista taught me how to combine WebGL rendering with astronomical algorithms. From implementing Jean Meeus solar position formulas to optimizing Three.js performance, here's what I learned.",
     date: "2024-10-28",
     readTime: "6 min read",
-    category: "AI/ML",
-    tags: ["LLM", "AI Integration", "Performance Optimization"],
+    category: "Web Development",
+    tags: ["WebGL", "Three.js", "3D Visualization", "Algorithms"],
     // Future: contentMarkdown: "path/to/markdown/file.md"
   },
   {
@@ -304,6 +306,6 @@ export const navLinks = [
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "education", label: "Education" },
-  { id: "blog", label: "Blog" },
+  // { id: "blog", label: "Blog" },
   { id: "contact", label: "Contact" },
 ];
